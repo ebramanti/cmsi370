@@ -1,0 +1,5 @@
+# Compiled source #
+###################
+*.aux
+*.log
+*.synctex.gz
