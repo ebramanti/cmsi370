@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bootstrap 101 Template</title>
+    <title>RPG Character Creator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
@@ -9,7 +9,7 @@
     <!-- My CSS -->
     <link rel="stylesheet" href="rpg.css">
   </head>
-  <body>
+    <body>
     <div class="container">
       <div class="row">
         <p class="lead text-info">
@@ -20,16 +20,15 @@
           <em>Have fun!!!</em>
         </small>
       </div>
-      <div class="row">
-        <div class="col-md-8">
-          <select multiple class="form-control">
-            <option>Conan</option>
-            <option>Buster</option>
-            <option>Nigel Thornberry</option>
-            <option>Eddard Stark</option>
-            <option>Satan</option>
-          </select>
-        </div>
+      <table class="table table-striped">
+        <td>
+          Name
+        </td>
+        <td>Race</td>
+        <td>Sex</td>
+        <td>Skin Tone</td>
+        <td>Weight</td>
+      </table>
         <div class="col-md-4">
           <div class="row">
             <a id="create-button" data-toggle="modal" href="#createModal" class="btn btn-lg btn-success btn-block">Create</a>
@@ -71,7 +70,6 @@
         </div>
         <div class="modal-body">
           <p>Please select the desired information to create your character.</p>
-
           <select class="form-control">
             <option>Fighter</option>
             <option>Wizard</option>
@@ -79,10 +77,14 @@
             <option>Ranger</option>
             <option>Demon</option>
           </select>
+          <p>Please select the desired information to create your character.</p>
+          <select class="form-control">
+            <option>Holder</option>
+          </select>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button id="confirm-delete-button" type="button" class="btn btn-success">Create Character</button>
+          <button id="confirm-create-button" type="button" class="btn btn-success">Create Character</button>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
