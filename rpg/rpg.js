@@ -9,8 +9,13 @@ $(function () {
     });
 
     $("#confirm-create-button").click(function () {
-        console.log("Create confirmed!!!!!");
-        window.location = "character.html#"
+        console.log("Create confirmed!");
+        window.location = "character.html#" + $("#createModal input").val()+"#"+ $("#createModal select").val()+"#"+ $("#createModal select").val()+"#"+ $("#createModal select").val();)
+    });
+
+    $("#confirm-edit-button").click(function () {
+        console.log("Edit confirmed!");
+        window.location = "character.html#" + $()
     });
 
     $('.table table-striped .link').on('click', function(e) {
