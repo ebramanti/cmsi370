@@ -24,6 +24,10 @@
 
 .btn-help{
   bottom: 15px;
-  float: right;
+  float:left;
   top: 15px;
+}
+
+.topOfPage {
+	margin-top: 5px
 }
