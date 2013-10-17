@@ -36,10 +36,42 @@
           </tr>
         </thead>
         <tbody>
+          <div class="span4 collapse-group">
           <tr>
             <td><input type="checkbox"></td>
-            <td>Patrick Stewart</td>
+            <td><a href="#">Patrick Stewart</a></td>
             <td>Breton</td>
+            <td>Male</td>
+            <td>Light</td>
+            <td>1000</td>
+          </tr>
+          </div>
+        </tbody>
+        <tbody>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td><a href="#">Quark</a></td>
+            <td>Khajiit</td>
+            <td>Female</td>
+            <td>Fur</td>
+            <td>1000</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td><a href="#">Jaden Korr</a></td>
+            <td>Redguard</td>
+            <td>Female</td>
+            <td>Red</td>
+            <td>1000</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td><a href="#">Qui-Gon Jinn</a></td>
+            <td>Argonian</td>
             <td>Male</td>
             <td>Light</td>
             <td>1000</td>
@@ -48,9 +80,9 @@
         <tbody>
           <tr>
             <td><input type="checkbox"></td>
-            <td>Patrick Stewart</td>
-            <td>Breton</td>
-            <td>Male</td>
+            <td><a href="#">Ted Cruz</a></td>
+            <td>Imperial</td>
+            <td>Female</td>
             <td>Light</td>
             <td>1000</td>
           </tr>
@@ -58,52 +90,17 @@
         <tbody>
           <tr>
             <td><input type="checkbox"></td>
-            <td>Patrick Stewart</td>
-            <td>Breton</td>
-            <td>Male</td>
-            <td>Light</td>
-            <td>1000</td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td>Patrick Stewart</td>
-            <td>Breton</td>
-            <td>Male</td>
-            <td>Light</td>
-            <td>1000</td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td>Patrick Stewart</td>
-            <td>Breton</td>
-            <td>Male</td>
-            <td>Light</td>
-            <td>1000</td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td>Patrick Stewart</td>
-            <td>Breton</td>
+            <td><a href="#">Scorpion</a></td>
+            <td>Dunmer</td>
             <td>Male</td>
             <td>Light</td>
             <td>1000</td>
           </tr>
         </tbody>
       </table>
-        <div class="row-bottom">
-          <div class="row">
+        <div class="btn-group btn-group-justified">
             <a id="create-button" data-toggle="modal" href="#createModal" class="btn btn-lg btn-success btn-block"><span class="glyphicon glyphicon-pencil">Create</span></a>
-          </div>
-          <div class="row">
             <a class="btn btn-info btn-lg btn-block" href="character.html"><span class="glyphicon glyphicon-edit">Edit</span></a>
-          </div>
-          <div class="row">
             <a id="delete-button" data-toggle="modal" href="#deleteModal" class="btn btn-lg btn-danger btn-block"><span class="glyphicon glyphicon-trash">Delete</span></a>
           </div>
         </div>
@@ -136,6 +133,10 @@
           <h4 class="modal-title">Create Character</h4>
         </div>
         <div class="modal-body">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            <input type="name" class="form-control" id="name" placeholder="Enter name of Dragonborn">
+          </div>
           <p>Please select the desired information to create your character.</p>
           <select class="form-control">
             <option>Fighter</option>
