@@ -8,6 +8,11 @@ $(function () {
         $('#deleteModal').modal('hide');
     });
 
+    $("#close-help-button").click(function () {
+        console.log("Help close confirmed!!!!!");
+        $('#helpModal').modal('hide');
+    });
+
     $("#confirm-create-button").click(function () {
         console.log("Create confirmed!");
         window.location = "character.html#" + $("#createModal input.name").val()+"#"+ $("#createModal select.race").val()+"#"+ $("#createModal select.gender").val()+"#"+ $("#createModal select.skinTone").val()+"#"+ $("#createModal input.weight").val();
@@ -15,7 +20,23 @@ $(function () {
 
     $("#confirm-edit-button").click(function () {
         console.log("Edit confirmed!");
-        window.location = $("#checkbox input.href").val()
+    });
+
+    $("#confirm-delete-item-button").click(function () {
+        console.log("Delete confirmed!!!!!");
+
+        // Now we dismiss the dialog.
+        $('#deleteItemModal').modal('hide');
+    });
+
+    $("#confirm-create-item-button").click(function () {
+        console.log("Create confirmed!");
+        $('#createItemModal').modal('hide');
+    });
+
+    $("#confirm-edit-item-button").click(function () {
+        console.log("Edit confirmed!");
+        $('#editItemModal').modal('hide');
     });
 
 	/*$("#createModal").validate({
