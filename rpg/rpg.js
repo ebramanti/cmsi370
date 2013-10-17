@@ -10,7 +10,7 @@ $(function () {
 
     $("#confirm-create-button").click(function () {
         console.log("Create confirmed!");
-        window.location = "character.html#" + $("#createModal input").val()+"#"+ $("#createModal select").val()+"#"+ $("#createModal select").val()+"#"+ $("#createModal select").val();)
+        window.location = "character.html#" + $("#createModal input.name").val()+"#"+ $("#createModal select.race").val()+"#"+ $("#createModal select.gender").val()+"#"+ $("#createModal select.skinTone").val()+"#"+ $("#createModal input.weight").val();
     });
 
     $("#confirm-edit-button").click(function () {
