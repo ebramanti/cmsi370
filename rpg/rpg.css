@@ -5,3 +5,18 @@
 .column {
 	margin-right: 5px;
 }
+
+.red {
+	background-color:#ff3600;
+	border-color:gray;
+}
+
+.green {
+	background-color:#c0ff00;
+	border-color:gray;
+}
+
+.blue {
+	background-color:#00a8ff;
+	border-color:gray;
+}
