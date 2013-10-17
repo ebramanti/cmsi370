@@ -86,4 +86,29 @@ $(function () {
 	    errorPlacement: function (error, element) {
 	        element.closest('.modal-content').find('.help-block').html(error.text());
 	    } */
-	});
+
+        var characterRowTemplate = '<tr>' +
+            '<td><input type="checkbox" value="0"></td>' +
+            '<td><a href="character.html#Patrick Stewart#Breton#Male#Light#1000">Patrick Stewart</a></td>' +
+            '<td>Breton</td>' +
+            '<td>Male</td>' +
+            '<td>Light</td>' +
+            '<td>1000lbs</td>' +
+          '</tr>';
+
+        $.getJSON(
+            "http://lmu-diabolical.appspot.com/characters",
+            function (characters) {
+                // Do something with the character list.
+                characters.forEach(function (character) {
+                    var $characterRow = $(characterRowTemplate);
+                    $characterRow.find("td:nth-child(2) > a")
+                        .attr({ href: "character.html#" + character.id })
+                        .text(character.name);
+                    $characterRow.find("td:nth-child(3)").text(character.classType);
+                    $characterRow.find("td:nth-child(4)").text(character.gender.substr(0, 1));
+                    $("#character-table > tbody").append($characterRow);
+                });
+            }
+        );
+});
