@@ -16,17 +16,15 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-          <!-- Can't draw anything yet, so... -->
-          <img src="http://placehold.it/350x700">
-        </div>
-        <div class="col-md-6">
           <h1>
-            <strong>
-              <script>
-                a = window.location.hash.split("#");
-                document.write(a[1])
-              </script>
-            </strong>
+            <em>
+              <strong>
+                <script>
+                  a = window.location.hash.split("#");
+                  document.write(a[1])
+                </script>
+              </strong>
+            </em>
           </h1>
           <p><strong><script>document.write("Race: " + a[2]);</script>
               &#8226; <script>document.write("Gender: " + a[3]);</script>
@@ -190,9 +188,29 @@
               </tr>
             </tbody>
           </table>
-        </div>
-      </div>
-    </div>
+          </div>
+          <div class="column-md-6">
+            <style type="text/css">
+              .tablething {width:550px;}
+            </style>
+            <div class="btn-group">
+            <a id="create-button" data-toggle="modal" href="#createItemModal" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-pencil"></span>Create Item</a>
+            <a class="btn btn-info btn-lg" href="#"><span class="glyphicon glyphicon-edit"></span>Edit Item Attributes</a>
+            <a id="delete-button" data-toggle="modal" href="#deleteItemModal" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-trash"></span>Delete Item</a>
+            </div>
+            <table class="tablething">
+              <thead>
+                <h1><strong><em>Inventory</em></strong></h1>
+                <p><strong>A list of <script>document.write(a[1]+"'s ");</script>items.</strong></p>
+                <th>Item Name</th>
+                <th>Damage</th>
+                <th>Weight</th>
+                <th>Value</th>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//code.jquery.com/jquery.js"></script>
