@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RPG Character Creator</title>
+    <title>Skyrim Character Creator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="http://images4.wikia.nocookie.net/__cb62351/elderscrolls/images/6/64/Favicon.ico"/>
 
     <!-- My CSS -->
     <link rel="stylesheet" href="rpg.css">
@@ -12,32 +13,48 @@
     <body>
     <div class="container">
       <div class="row">
-        <p class="lead text-info">
-          List of Characters
-        </p>
+        <center><p><img src="http://www.polishtheconsole.com/wp-content/uploads/2011/09/TESSkyrimLogo.jpg" class="img-rounded" height=125 width=225></p></center>
+        <center><p class="lead text-info">
+          <strong>Character Creator</strong>
+        </p></center>
         <small>
           Choose a character from the list below, then click the appropriate button.
           <em>Have fun!!!</em>
         </small>
       </div>
       <table class="table table-striped">
-        <td>
-          Name
-        </td>
-        <td>Race</td>
-        <td>Sex</td>
-        <td>Skin Tone</td>
-        <td>Weight</td>
+        <thead>
+          <tr>  
+            <th>
+              <span class="glyphicon glyphicon-check"></span>
+            </th>
+            <th>Name</th>
+            <th>Race</th>
+            <th>Sex</th>
+            <th>Skin Tone</th>
+            <th>Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>D</td>
+            <td>Patrick Stewart</td>
+            <td>Breton</td>
+            <td>Male</td>
+            <td>Light</td>
+            <td>1000</td>
+          </tr>
+        </tbody>
       </table>
-        <div class="col-md-4">
+        <div class="row-bottom">
           <div class="row">
-            <a id="create-button" data-toggle="modal" href="#createModal" class="btn btn-lg btn-success btn-block">Create</a>
+            <a id="create-button" data-toggle="modal" href="#createModal" class="btn btn-lg btn-success btn-block"><span class="glyphicon glyphicon-pencil">Create</span></a>
           </div>
           <div class="row">
-            <a class="btn btn-info btn-lg btn-block" href="character.html">Edit</a>
+            <a class="btn btn-info btn-lg btn-block" href="character.html"><span class="glyphicon glyphicon-edit">Edit</span></a>
           </div>
           <div class="row">
-            <a id="delete-button" data-toggle="modal" href="#deleteModal" class="btn btn-lg btn-danger btn-block">Delete</a>
+            <a id="delete-button" data-toggle="modal" href="#deleteModal" class="btn btn-lg btn-danger btn-block"><span class="glyphicon glyphicon-trash">Delete</span></a>
           </div>
         </div>
       </div>

@@ -1,3 +1,7 @@
 .row {
     margin-bottom: 5px;
 }
+
+.column {
+	margin-right: 5px;
+}
