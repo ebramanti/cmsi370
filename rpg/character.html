@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Character Page</title>
+    <title>Character Creation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
@@ -20,7 +20,23 @@
           <img src="http://placehold.it/350x700">
         </div>
         <div class="col-md-6">
-          <h2>Name</h2>
+          <h1>
+            <strong>
+              <script>
+                a = window.location.hash.split("#");
+                document.write(a[1])
+              </script>
+            </strong>
+          </h1>
+          <h2>
+            <em>
+              <p><script>document.write("Race: " + a[2]);</script></p>
+              <p><script>document.write("Gender: " + a[3]);</script></p>
+              <p><script>document.write("Skin Tone: " + a[4]);</script></p>
+              <p><script>document.write("Weight: " + a[5]);</script></p>
+            </em>
+          </h2>
+
 
           <table class="table table-striped">
             <thead>
