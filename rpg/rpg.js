@@ -13,6 +13,11 @@ $(function () {
         $('#helpModal').modal('hide');
     });
 
+    $("#close-inventory-help-button").click(function () {
+        console.log("Inventory help close confirmed!!!!!");
+        $('#inventoryHelpModal').modal('hide');
+    });
+
     $("#confirm-create-button").click(function () {
         console.log("Create confirmed!");
         window.location = "character.html#" + $("#createModal input.name").val()+"#"+ $("#createModal select.race").val()+"#"+ $("#createModal select.gender").val()+"#"+ $("#createModal select.skinTone").val()+"#"+ $("#createModal input.weight").val();
