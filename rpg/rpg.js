@@ -113,8 +113,8 @@ $(function () {
         } */
 
         var characterRowTemplate = '<tr>' +
-            '<td><input type="checkbox" value="0"></td>' +
-            '<td><a href="character.html#Patrick Stewart#Breton#Male#Light#1000">Patrick Stewart</a></td>' +
+            '<td><input type="checkbox" value=""></td>' +
+            '<td><a href="character.html#"></a></td>' +
             '<td>Breton</td>' +
             '<td>Male</td>' +
             '<td>Light</td>' +
@@ -130,7 +130,8 @@ $(function () {
                     $characterRow.find("td:nth-child(2) > a")
                         .attr({ href: "character.html#" + character.id })
                         .text(character.name);
-                    $characterRow.find("td:nth-child(3)").text(character.classType);
+                    //For Class Type and Gender, I format the text so that the first letter is capital, and the rest lowercase, regardless of user input.
+                    $characterRow.find("td:nth-child(3)").text(character.classType.substring(0, 1).toUpperCase() + character.classType.substring(1).toLowerCase());
                     $characterRow.find("td:nth-child(4)").text(character.gender.substr(0, 1).toUpperCase() + character.gender.substr(1).toLowerCase());
                     $characterRow.find("td:nth-child(5)").text(character.level);
                     $characterRow.find("td:nth-child(6)").text(character.money)
