@@ -2,8 +2,22 @@
 $(function () {
 
     $("#confirm-delete-button").click(function () {
+        var values = $('input:checkbox:checked.edit-delete-checkbox').map(function () {
+            return this.value;
+        }).get(); // ["18", "55", "10"]
+        console.log(values.length);
+        console.log(values);
+        for (var i = 0; i < values.length + 1; values++) {   
+            $.ajax({
+                type: 'DELETE',
+                url: "http://lmu-diabolical.appspot.com/characters/" + values[i],
+                success: function (data, textStatus, jqXHR) {
+                    console.log("Gone baby gone.");
+                }
+            });
+            console.log(values[i]);
+        }
         console.log("Delete confirmed!!!!!");
-
         // Now we dismiss the dialog.
         $('#deleteModal').modal('hide');
     });
@@ -39,64 +53,54 @@ $(function () {
                 console.log("You may access the new character at:" +
                     jqXHR.getResponseHeader("Location"));
                 //window.location = "character.html#" + jqXHR.getResponseHeader("Location");
+                window.location = "index.html";
             }
         });
         console.log("Create confirmed!");
+        //characterList();
         $('#createModal').modal('hide');
     });
 
-    /*$("#confirm-random-create-button").click(function () {
-        var nameArray = ["Hunter", "Tyler", "Logan", "Teresa", "Daniella", "Dorothy","Carolyn", "Daphne"];
-        var classTypeArray = ["Nord", "Imperial", "Redguard", "Breton", "Argonian", "Khajiit", "Dunmer", "Altmer", "Bosmer", "Orsimer"];
-        var name = function() {
-            return nameArray[Math.floor((Math.random()*nameArray.length) + 1)];
-        };
-        var classType = function() {
-            return classTypeArray[Math.floor((Math.random()*classTypeArray.length) + 1)];
-        };
-        var level = Math.floor((Math.random()*1000)+1)
-        var money = Math.floor((Math.random()*1000000)+1);
-        var randomAttributes = [name(), classType(), level, money];
-        var gender = function() {
-            for (var i = 0; i < 3; i++) {
-                if (name == nameArray[i]) {
-                    return "Male";
-                }
-            }
-            return "Female"
-        };
-        randomAttributes.splice(2, gender());
+    $("#confirm-edit-button").click(function () {
+        var value = $('input:checkbox:checked.edit-delete-checkbox').val();
+        console.log(value);
         $.ajax({
-            type: 'POST',
-            url: "http://lmu-diabolical.appspot.com/characters",
+            type: 'PUT',
+            url: "http://lmu-diabolical.appspot.com/characters/" + value,
             data: JSON.stringify({
-                name: randomAttributes[0],
-                classType: randomAttributes[1],
-                gender: randomAttributes[2],
-                level: randomAttributes[3],
-                money: randomAttributes[4]
+                id: value,
+                name:$("#edit-name").val(),
+                classType:$("#edit-classType").val(),
+                gender:$("#edit-gender").val().toUpperCase(),
+                level:parseInt($("#edit-level").val(), 10),
+                money:parseInt($("#edit-money").val(), 10)
             }),
             contentType: "application/json",
             dataType: "json",
             accept: "application/json",
-            complete: function (jqXHR, textStatus) {
-                // The new character can be accessed from the Location header.
-                console.log("You may access the new character at:" +
-                    jqXHR.getResponseHeader("Location"));
-                //window.location = "character.html#" + jqXHR.getResponseHeader("Location");
+            success: function (data, textStatus, jqXHR) {
+                console.log("Done: no news is good news.");
             }
         });
+        $('#editModal').modal('hide');
+    });
+    $("#confirm-random-create-button").click(function () {
+        $.getJSON(
+            "http://lmu-diabolical.appspot.com/characters/spawn",
+            function (character) {
+            // Do something with the character.
+            console.log(character);
+            }
+        );
         console.log(randomAttributes);
         console.log("Random create confirmed!");
-    }); */
+    });
 
     $("#confirm-edit-button").click(function () {
         console.log("Edit confirmed!");
     });
 
     $("#confirm-delete-item-button").click(function () {
-        console.log("Delete confirmed!!!!!");
-
         // Now we dismiss the dialog.
         $('#deleteItemModal').modal('hide');
     });
@@ -150,7 +154,7 @@ $(function () {
         } */
 
         var characterRowTemplate = '<tr>' +
-            '<td><input type="checkbox" value=""></td>' +
+            '<td><input type="checkbox" class="edit-delete-checkbox" value=""></td>' +
             '<td><a href="character.html#"></a></td>' +
             '<td>Breton</td>' +
             '<td>Male</td>' +
@@ -158,22 +162,27 @@ $(function () {
             '<td>1000lbs</td>' +
           '</tr>';
 
-        $.getJSON(
+        var characterList = function(){
+            $.getJSON(
             "http://lmu-diabolical.appspot.com/characters",
             function (characters) {
                 // Do something with the character list.
+                $( ".character-table" ).empty();
                 characters.forEach(function (character) {
                     var $characterRow = $(characterRowTemplate);
+                    $characterRow.find("td:nth-child(1) > input")
+                        .attr({ value: character.id })
                     $characterRow.find("td:nth-child(2) > a")
                         .attr({ href: "character.html#" + character.id })
                         .text(character.name);
                     //For Class Type and Gender, I format the text so that the first letter is capital, and the rest lowercase, regardless of user input.
-                    $characterRow.find("td:nth-child(3)").text(character.classType.substring(0, 1).toUpperCase() + character.classType.substring(1).toLowerCase());
+                    $characterRow.find("td:nth-child(3)").text(character.classType);
                     $characterRow.find("td:nth-child(4)").text(character.gender.substr(0, 1).toUpperCase() + character.gender.substr(1).toLowerCase());
                     $characterRow.find("td:nth-child(5)").text(character.level);
                     $characterRow.find("td:nth-child(6)").text(character.money)
                     $("#character-table > tbody").append($characterRow);
                 });
-            }
-        );
+            });
+        }
+        characterList();
 });
