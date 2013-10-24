@@ -156,10 +156,10 @@ $(function () {
         var characterRowTemplate = '<tr>' +
             '<td><input type="checkbox" class="edit-delete-checkbox" value=""></td>' +
             '<td><a href="character.html#"></a></td>' +
-            '<td>Breton</td>' +
-            '<td>Male</td>' +
-            '<td>Light</td>' +
-            '<td>1000lbs</td>' +
+            '<td></td>' +
+            '<td></td>' +
+            '<td></td>' +
+            '<td></td>' +
           '</tr>';
 
         var characterList = function(){
