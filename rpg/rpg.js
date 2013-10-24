@@ -64,6 +64,15 @@ $(function () {
         $('#createModal').modal('hide');
     });
 
+    $("#createModal").on("hidden.bs.modal", function() {
+        console.log("Dang son");
+        $("#name").val("");
+        $("#classType").removeClass("active");
+        $("#gender").removeClass("active");
+        $("#level").val("");
+        $("#money").val("");
+    });
+
     $("#confirm-edit-button").click(function () {
         var value = $('input:checkbox:checked.edit-delete-checkbox').val();
         console.log(value);
