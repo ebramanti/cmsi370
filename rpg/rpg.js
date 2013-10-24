@@ -48,6 +48,51 @@ $(function () {
         console.log("Create confirmed!");
     });
 
+    /*$("#confirm-random-create-button").click(function () {
+        var nameArray = ["Hunter", "Tyler", "Logan", "Teresa", "Daniella", "Dorothy","Carolyn", "Daphne"];
+        var classTypeArray = ["Nord", "Imperial", "Redguard", "Breton", "Argonian", "Khajiit", "Dunmer", "Altmer", "Bosmer", "Orsimer"];
+        var name = function() {
+            return nameArray[Math.floor((Math.random()*nameArray.length) + 1)];
+        };
+        var classType = function() {
+            return classTypeArray[Math.floor((Math.random()*classTypeArray.length) + 1)];
+        };
+        var level = Math.floor((Math.random()*1000)+1)
+        var money = Math.floor((Math.random()*1000000)+1);
+        var randomAttributes = [name(), classType(), level, money];
+        var gender = function() {
+            for (var i = 0; i < 3; i++) {
+                if (name == nameArray[i]) {
+                    return "Male";
+                }
+            }
+            return "Female"
+        };
+        randomAttributes.splice(2, gender());
+        $.ajax({
+            type: 'POST',
+            url: "http://lmu-diabolical.appspot.com/characters",
+            data: JSON.stringify({
+                name: randomAttributes[0],
+                classType: randomAttributes[1],
+                gender: randomAttributes[2],
+                level: randomAttributes[3],
+                money: randomAttributes[4]
+            }),
+            contentType: "application/json",
+            dataType: "json",
+            accept: "application/json",
+            complete: function (jqXHR, textStatus) {
+                // The new character can be accessed from the Location header.
+                console.log("You may access the new character at:" +
+                    jqXHR.getResponseHeader("Location"));
+                //window.location = "character.html#" + jqXHR.getResponseHeader("Location");
+            }
+        });
+        console.log(randomAttributes);
+        console.log("Random create confirmed!");
+    }); */
+
     $("#confirm-edit-button").click(function () {
         console.log("Edit confirmed!");
     });
