@@ -14,14 +14,11 @@ $(function () {
                 url: "http://lmu-diabolical.appspot.com/characters/" + values[i].toString(),
                 success: function (data, textStatus, jqXHR) {
                     console.log("Gone baby gone.");
-                    k++;
+                    window.location = "index.html";
                 }
             });
             console.log(values[i]);
         });
-        if (k > values.length) {
-            window.location = "index.html";
-        }
         console.log("Delete confirmed!!!!!");
         // Now we dismiss the dialog.
         $('#deleteModal').modal('hide');
@@ -86,11 +83,12 @@ $(function () {
             accept: "application/json",
             success: function (data, textStatus, jqXHR) {
                 console.log("Done: no news is good news.");
+                window.location = "index.html";
             }
         });
         $('#editModal').modal('hide');
     });
-    $("#confirm-random-create-button").click(function () {
+    $("#confirm-random-create-button").click(function () { //not working
         var globalJsonVar;
         $.getJSON("http://lmu-diabolical.appspot.com/characters/spawn", 
             function (character) {
@@ -117,10 +115,6 @@ $(function () {
         console.log("Random create confirmed!");
     });
 
-    $("#confirm-edit-button").click(function () {
-        console.log("Edit confirmed!");
-    });
-
     $("#confirm-delete-item-button").click(function () {
         // Now we dismiss the dialog.
         $('#deleteItemModal').modal('hide');
@@ -131,7 +125,7 @@ $(function () {
         $('#createItemModal').modal('hide');
     });
 
-
+    // an attempt to disable the edit button when there are more than 2 things selected.
     if ($('.container').find(':checked').length >= 2) {
         console.log("Yo");
         $("#edit-button").attr("disabled", "disabled");
@@ -187,29 +181,25 @@ $(function () {
             '<td></td>' +
             '<td></td>' +
           '</tr>';
-
-        var characterList = function(){
-            $.getJSON(
-            "http://lmu-diabolical.appspot.com/characters",
-            function (characters) {
-                // Do something with the character list.
-                $( ".character-table" ).empty();
-                characters.forEach(function (character) {
-                    var $characterRow = $(characterRowTemplate);
-                    $characterRow.find("td:nth-child(1) > input")
-                        .attr({ value: character.id })
-                    $characterRow.find("td:nth-child(2) > a")
-                        .attr({ href: "character.html#" + character.id })
-                        .text(character.name);
-                    //For Class Type and Gender, I format the text so that the first letter is capital, and the rest lowercase, regardless of user input.
-                    $characterRow.find("td:nth-child(3)").text(character.classType);
-                    $characterRow.find("td:nth-child(4)").text(character.gender.substr(0, 1).toUpperCase() + character.gender.substr(1).toLowerCase());
-                    $characterRow.find("td:nth-child(5)").text(character.level);
-                    $characterRow.find("td:nth-child(6)").text(character.money)
-                    $("#character-table > tbody").append($characterRow);
-                });
+            
+        $.getJSON(
+        "http://lmu-diabolical.appspot.com/characters",
+        function (characters) {
+            // Do something with the character list.
+            characters.forEach(function (character) {
+                var $characterRow = $(characterRowTemplate);
+                $characterRow.find("td:nth-child(1) > input")
+                    .attr({ value: character.id })
+                $characterRow.find("td:nth-child(2) > a")
+                    .attr({ href: "character.html#" + character.id })
+                    .text(character.name);
+                //For Class Type and Gender, I format the text so that the first letter is capital, and the rest lowercase, regardless of user input.
+                $characterRow.find("td:nth-child(3)").text(character.classType);
+                $characterRow.find("td:nth-child(4)").text(character.gender.substr(0, 1).toUpperCase() + character.gender.substr(1).toLowerCase());
+                $characterRow.find("td:nth-child(5)").text(character.level);
+                $characterRow.find("td:nth-child(6)").text(character.money)
+                $("#character-table > tbody").append($characterRow);
             });
-        }
-        characterList();
+        });
 
 });
