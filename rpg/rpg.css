@@ -19,7 +19,7 @@
 }
 
 .table-borderless td, .table-borderless th, .table-borderless tr {
-    border: 0 !important
+    border: 0 !important;
 }
 
 .btn-help{
