@@ -130,49 +130,6 @@ $(function () {
         console.log("Yo");
         $("#edit-button").attr("disabled", "disabled");
     }
-    /*$("#createModal").validate({
-        rules: {
-            name: {
-                minlength: 1,
-                required: true
-            },
-            race: {
-                required: true,
-                !"Select a Race": true
-            },
-            gender: {
-                required: true,
-                !"Select a Gender": true
-            },
-            skinTone: {
-                required: true,
-                !"Select a Skin Tone": true
-            },
-            weight: {
-                minlength: 1,
-                $.isNumeric(): true
-            }
-        },
-        messages: {
-            name: "Please enter a valid name",
-            race: "Please select a race",
-            gender: "Please select a gender",
-            skinTone: "Please select a skin tone",
-            weight: "Please enter a valid weight"
-        },
-        highlight: function (element, errorClass, validClass) {
-            $(element).closest('.modal-content').removeClass('success').addClass('error');
-        },
-        unhighlight: function (element, errorClass, validClass) {
-            $(element).closest('.modal-content').removeClass('error').addClass('success');
-        },
-        success: function (label) {
-            $(label).closest('form').find('.valid').removeClass("invalid");
-        },
-        errorPlacement: function (error, element) {
-            element.closest('.modal-content').find('.help-block').html(error.text());
-        } */
-
         var characterRowTemplate = '<tr>' +
             '<td><input type="checkbox" class="edit-delete-checkbox" value=""></td>' +
             '<td><a href="character.html#"></a></td>' +
