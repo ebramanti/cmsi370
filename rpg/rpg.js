@@ -19,22 +19,18 @@ $(function () {
     });
 
     $("#confirm-create-button").click(function () {
-        var name = $("#name").val();
-        var classType = $("#classType").val();
-        var gender = $("#gender").val()
-        var level = parseInt($("#level").val(), 10)
-        var money = parseInt($("#money").val(), 10);
-        console.log(name+classType+gender+level+money);
+        var newCharacter = {
+            name:$("#name").val(),
+            classType:$("#classType").val(),
+            gender:$("#gender").val(),
+            level:parseInt($("#level").val(), 10),
+            money:parseInt($("#money").val(), 10)
+        };
+        console.log(newCharacter);
         $.ajax({
             type: 'POST',
             url: "http://lmu-diabolical.appspot.com/characters",
-            data: JSON.stringify({
-                name: name,
-                classType: classType,
-                gender: gender,
-                level: level,
-                money: money
-            }),
+            data: JSON.stringify(newCharacter),
             contentType: "application/json",
             dataType: "json",
             accept: "application/json",
@@ -107,11 +103,6 @@ $(function () {
     $("#confirm-create-item-button").click(function () {
         console.log("Create confirmed!");
         $('#createItemModal').modal('hide');
-    });
-
-    $("#confirm-edit-item-button").click(function () {
-        console.log("Edit confirmed!");
-        $('#editItemModal').modal('hide');
     });
 
     /*$("#createModal").validate({
