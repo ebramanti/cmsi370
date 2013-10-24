@@ -31,3 +31,12 @@
 .topOfPage {
 	margin-top: 5px
 }
+
+#skilltable thead {
+	color: black;
+}
+
+#skilltable {
+	color: #FCFAFF;
+	background-color: transparent;
+}
