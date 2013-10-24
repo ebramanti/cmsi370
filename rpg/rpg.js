@@ -7,19 +7,25 @@ $(function () {
         }).get(); // ["18", "55", "10"]
         console.log(values.length);
         console.log(values);
-        for (var i = 0; i < values.length + 1; values++) {   
+        var k = 0;
+        values.forEach(function(value, i) {   
             $.ajax({
                 type: 'DELETE',
-                url: "http://lmu-diabolical.appspot.com/characters/" + values[i],
+                url: "http://lmu-diabolical.appspot.com/characters/" + values[i].toString(),
                 success: function (data, textStatus, jqXHR) {
                     console.log("Gone baby gone.");
+                    k++;
                 }
             });
             console.log(values[i]);
+        });
+        if (k > values.length) {
+            window.location = "index.html";
         }
         console.log("Delete confirmed!!!!!");
         // Now we dismiss the dialog.
         $('#deleteModal').modal('hide');
+
     });
 
     $("#close-help-button").click(function () {
@@ -85,14 +91,29 @@ $(function () {
         $('#editModal').modal('hide');
     });
     $("#confirm-random-create-button").click(function () {
-        $.getJSON(
-            "http://lmu-diabolical.appspot.com/characters/spawn",
+        var globalJsonVar;
+        $.getJSON("http://lmu-diabolical.appspot.com/characters/spawn", 
             function (character) {
-            // Do something with the character.
-            console.log(character);
+                globalJsonVar = character;
+                console.log(JSON.stringify(character));
             }
         );
-        console.log(randomAttributes);
+        console.log(JSON.stringify(globalJsonVar));
+        $.ajax({
+            type: 'POST',
+            url: "http://lmu-diabolical.appspot.com/characters",
+            data: JSON.stringify(globalJsonVar),
+            contentType: "application/json",
+            dataType: "json",
+            accept: "application/json",
+            complete: function (jqXHR, textStatus) {
+                // The new character can be accessed from the Location header.
+                console.log("You may access the new character at:" +
+                    jqXHR.getResponseHeader("Location"));
+                //window.location = "character.html#" + jqXHR.getResponseHeader("Location");
+                window.location = "index.html";
+            }
+        });
         console.log("Random create confirmed!");
     });
 
@@ -110,6 +131,11 @@ $(function () {
         $('#createItemModal').modal('hide');
     });
 
+
+    if ($('.container').find(':checked').length >= 2) {
+        console.log("Yo");
+        $("#edit-button").attr("disabled", "disabled");
+    }
     /*$("#createModal").validate({
         rules: {
             name: {
@@ -185,4 +211,5 @@ $(function () {
             });
         }
         characterList();
+
 });
