@@ -22,7 +22,7 @@ $(function () {
         var newCharacter = {
             name:$("#name").val(),
             classType:$("#classType").val(),
-            gender:$("#gender").val(),
+            gender:$("#gender").val().toUpperCase(),
             level:parseInt($("#level").val(), 10),
             money:parseInt($("#money").val(), 10)
         };
@@ -42,6 +42,7 @@ $(function () {
             }
         });
         console.log("Create confirmed!");
+        $('#createModal').modal('hide');
     });
 
     /*$("#confirm-random-create-button").click(function () {
