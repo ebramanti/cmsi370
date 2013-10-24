@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <title>Skyrim Character Creator</title>
@@ -18,7 +18,7 @@
         <center><h1>Character Creator</h1></center>
         <div class="btn-group btn-group-justified">
             <a id="create-button" data-toggle="modal" href="#createModal" class="btn btn-lg btn-success btn-block"><span class="glyphicon glyphicon-pencil"></span> Create Character</a>
-            <a class="btn btn-info btn-lg btn-block" href="character.html#EditPlaceHolder!#Breton#Gender#Legit#Over 9000"><span class="glyphicon glyphicon-edit"></span> Edit Character</a>
+            <a id="edit-button" data-toggle="modal" class="btn btn-info btn-lg btn-block" href="#editModal"><span class="glyphicon glyphicon-edit"></span> Edit Character</a>
             <a id="delete-button" data-toggle="modal" href="#deleteModal" class="btn btn-lg btn-danger btn-block"><span class="glyphicon glyphicon-trash"></span> Delete Character</a>
           </div>
       </div>
@@ -151,6 +151,49 @@
           <button id="confirm-random-create-button"type="button" class="btn btn-warning" data-dismiss="modal" id="CharacterSpawner">Spawn Random Character</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
           <button id="confirm-create-button" type="button" class="btn btn-success">Create Character</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Character Modal -->
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Character</h4>
+        </div>
+        <div class="modal-body">
+          <label for="Edit Name">Edit Name</label>
+          <input type="Name" class="form-control" id="edit-name" placeholder="Edit name of Dragonborn">
+          <label for="Class">Edit Class</label>
+          <select class="form-control" id="edit-classType">
+            <option>Edit Class Type</option>
+            <option>Nord</option>
+            <option>Imperial</option>
+            <option>Redguard</option>
+            <option>Breton</option>
+            <option>Argonian</option>
+            <option>Khajiit</option>
+            <option>Dunmer</option>
+            <option>Altmer</option>
+            <option>Bosmer</option>
+            <option>Orsimer</option>
+          </select>
+          <label for="Edit Gender">Edit Gender</label>
+          <select class="form-control" id="edit-gender">
+            <option>Edit Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+          <label for="Edit Level">Edit Level</label>
+          <input type="Level" class="form-control" id="edit-level" placeholder="Edit Level of Dragonborn">
+          <label for="Edit Money">Edit Money</label>
+          <input type="text" class="form-control" id="edit-money" placeholder="Edit Amount of Money">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel Editing</button>
+          <button id="confirm-edit-button" type="button" class="btn btn-success">Edit Character</button>
         </div>
       </div>
     </div>
