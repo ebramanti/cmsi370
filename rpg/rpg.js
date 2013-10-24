@@ -19,8 +19,33 @@ $(function () {
     });
 
     $("#confirm-create-button").click(function () {
+        var name = $("#name").val();
+        var classType = $("#classType").val();
+        var gender = $("#gender").val()
+        var level = parseInt($("#level").val(), 10)
+        var money = parseInt($("#money").val(), 10);
+        console.log(name+classType+gender+level+money);
+        $.ajax({
+            type: 'POST',
+            url: "http://lmu-diabolical.appspot.com/characters",
+            data: JSON.stringify({
+                name: name,
+                classType: classType,
+                gender: gender,
+                level: level,
+                money: money
+            }),
+            contentType: "application/json",
+            dataType: "json",
+            accept: "application/json",
+            complete: function (jqXHR, textStatus) {
+                // The new character can be accessed from the Location header.
+                console.log("You may access the new character at:" +
+                    jqXHR.getResponseHeader("Location"));
+                //window.location = "character.html#" + jqXHR.getResponseHeader("Location");
+            }
+        });
         console.log("Create confirmed!");
-        window.location = "character.html#" + $("#createModal input.name").val()+"#"+ $("#createModal select.race").val()+"#"+ $("#createModal select.gender").val()+"#"+ $("#createModal select.skinTone").val()+"#"+ $("#createModal input.weight").val();
     });
 
     $("#confirm-edit-button").click(function () {
@@ -44,48 +69,48 @@ $(function () {
         $('#editItemModal').modal('hide');
     });
 
-	/*$("#createModal").validate({
-	    rules: {
-	        name: {
-	            minlength: 1,
-	            required: true
-	        },
-	        race: {
-	            required: true,
-	            !"Select a Race": true
-	        },
-	        gender: {
-	            required: true,
-	            !"Select a Gender": true
-	        },
-	        skinTone: {
-	            required: true,
-	            !"Select a Skin Tone": true
-	        },
-	        weight: {
-	            minlength: 1,
-	            $.isNumeric(): true
-	        }
-	    },
-	    messages: {
-	        name: "Please enter a valid name",
-	        race: "Please select a race",
-	        gender: "Please select a gender",
-	        skinTone: "Please select a skin tone",
-	        weight: "Please enter a valid weight"
-	    },
-	    highlight: function (element, errorClass, validClass) {
-	        $(element).closest('.modal-content').removeClass('success').addClass('error');
-	    },
-	    unhighlight: function (element, errorClass, validClass) {
-	        $(element).closest('.modal-content').removeClass('error').addClass('success');
-	    },
-	    success: function (label) {
-	        $(label).closest('form').find('.valid').removeClass("invalid");
-	    },
-	    errorPlacement: function (error, element) {
-	        element.closest('.modal-content').find('.help-block').html(error.text());
-	    } */
+    /*$("#createModal").validate({
+        rules: {
+            name: {
+                minlength: 1,
+                required: true
+            },
+            race: {
+                required: true,
+                !"Select a Race": true
+            },
+            gender: {
+                required: true,
+                !"Select a Gender": true
+            },
+            skinTone: {
+                required: true,
+                !"Select a Skin Tone": true
+            },
+            weight: {
+                minlength: 1,
+                $.isNumeric(): true
+            }
+        },
+        messages: {
+            name: "Please enter a valid name",
+            race: "Please select a race",
+            gender: "Please select a gender",
+            skinTone: "Please select a skin tone",
+            weight: "Please enter a valid weight"
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).closest('.modal-content').removeClass('success').addClass('error');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).closest('.modal-content').removeClass('error').addClass('success');
+        },
+        success: function (label) {
+            $(label).closest('form').find('.valid').removeClass("invalid");
+        },
+        errorPlacement: function (error, element) {
+            element.closest('.modal-content').find('.help-block').html(error.text());
+        } */
 
         var characterRowTemplate = '<tr>' +
             '<td><input type="checkbox" value="0"></td>' +
@@ -106,7 +131,9 @@ $(function () {
                         .attr({ href: "character.html#" + character.id })
                         .text(character.name);
                     $characterRow.find("td:nth-child(3)").text(character.classType);
-                    $characterRow.find("td:nth-child(4)").text(character.gender.substr(0, 1));
+                    $characterRow.find("td:nth-child(4)").text(character.gender.substr(0, 1).toUpperCase() + character.gender.substr(1).toLowerCase());
+                    $characterRow.find("td:nth-child(5)").text(character.level);
+                    $characterRow.find("td:nth-child(6)").text(character.money)
                     $("#character-table > tbody").append($characterRow);
                 });
             }
