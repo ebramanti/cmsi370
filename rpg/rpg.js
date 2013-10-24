@@ -103,25 +103,25 @@ $(function () {
             function (character) {
                 globalJsonVar = character;
                 console.log(JSON.stringify(character));
+                console.log(JSON.stringify(globalJsonVar));
+                $.ajax({
+                    type: 'POST',
+                    url: "http://lmu-diabolical.appspot.com/characters",
+                    data: JSON.stringify(globalJsonVar),
+                    contentType: "application/json",
+                    dataType: "json",
+                    accept: "application/json",
+                    complete: function (jqXHR, textStatus) {
+                        // The new character can be accessed from the Location header.
+                        console.log("You may access the new character at:" +
+                            jqXHR.getResponseHeader("Location"));
+                        //window.location = "character.html#" + jqXHR.getResponseHeader("Location");
+                        window.location = "index.html";
+                    }
+                });
+                console.log("Random create confirmed!");
             }
         );
-        console.log(JSON.stringify(globalJsonVar));
-        $.ajax({
-            type: 'POST',
-            url: "http://lmu-diabolical.appspot.com/characters",
-            data: JSON.stringify(globalJsonVar),
-            contentType: "application/json",
-            dataType: "json",
-            accept: "application/json",
-            complete: function (jqXHR, textStatus) {
-                // The new character can be accessed from the Location header.
-                console.log("You may access the new character at:" +
-                    jqXHR.getResponseHeader("Location"));
-                //window.location = "character.html#" + jqXHR.getResponseHeader("Location");
-                window.location = "index.html";
-            }
-        });
-        console.log("Random create confirmed!");
     });
 
     $("#confirm-delete-item-button").click(function () {
