@@ -6,12 +6,11 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <link rel="shortcut icon" href="http://images4.wikia.nocookie.net/__cb62351/elderscrolls/images/6/64/Favicon.ico"/>
-
     <!-- My CSS -->
     <link rel="stylesheet" href="rpg.css">
     <div class="btn-group btn-help"><a id="help-button" data-toggle="modal" href="#helpModal" class="btn btn-lg"><span class="glyphicon glyphicon-info-sign"></span> <strong>Help</strong></a></div>
   </head>
-    <body>
+  <body>
     <div class="container">
       <div class="row topOfPage">
         <center><img src="http://www.polishtheconsole.com/wp-content/uploads/2011/09/TESSkyrimLogo.jpg" class="img-rounded" height=160 width=300></center>
@@ -45,133 +44,133 @@
       </footer>
     </div>
 
-<!-- Create Character Modal -->
-  <div class="modal fade" id="createModal" tabindex="-1" role="dialog" data-backdrop="static">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Create Character</h4>
-        </div>
-        <div class="modal-body">
-          <label for="Name">Name</label>
-          <input type="Name" class="form-control" id="name" placeholder="Enter name of Dragonborn">
-          <label for="Class">Class</label>
-          <select class="form-control" id="classType">
-            <option>Select a Class Type</option>
-            <option>Nord</option>
-            <option>Imperial</option>
-            <option>Redguard</option>
-            <option>Breton</option>
-            <option>Argonian</option>
-            <option>Khajiit</option>
-            <option>Dunmer</option>
-            <option>Altmer</option>
-            <option>Bosmer</option>
-            <option>Orsimer</option>
-          </select>
-          <label for="Gender">Gender</label>
-          <select class="form-control" id="gender">
-            <option>Gender</option>
-            <option>Male</option>
-            <option>Female</option>
-          </select>
-          <!--<input type="Gender" class="form-control" id="gender">-->
-          <label for="Level">Level</label>
-          <input type="Level" class="form-control" id="level" placeholder="Enter Level of Dragonborn">
-          <label for="Money">Money</label>
-          <input type="text" class="form-control" id="money" placeholder="Enter Amount of Money">
-        </div>
-        <div class="modal-footer">
-          <button id="confirm-random-create-button"type="button" class="btn btn-warning pull-left" data-dismiss="modal" id="CharacterSpawner">Spawn Random Character</button>
-          <button id="cancel-create-button" type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-          <button id="confirm-create-button" type="button" class="btn btn-success">Create Character</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Edit Character Modal -->
-  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" data-backdrop="static">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Edit Character</h4>
-        </div>
-        <div class="modal-body">
-          <label for="Edit Name">Edit Name</label>
-          <input type="Name" class="form-control" id="edit-name" placeholder="Edit name of Dragonborn">
-          <label for="Class">Edit Class</label>
-          <select class="form-control" id="edit-classType">
-            <option>Edit Class Type</option>
-            <option>Nord</option>
-            <option>Imperial</option>
-            <option>Redguard</option>
-            <option>Breton</option>
-            <option>Argonian</option>
-            <option>Khajiit</option>
-            <option>Dunmer</option>
-            <option>Altmer</option>
-            <option>Bosmer</option>
-            <option>Orsimer</option>
-          </select>
-          <label for="Edit Gender">Edit Gender</label>
-          <select class="form-control" id="edit-gender">
-            <option>Edit Gender</option>
-            <option>Male</option>
-            <option>Female</option>
-          </select>
-          <label for="Edit Level">Edit Level</label>
-          <input type="Level" class="form-control" id="edit-level" placeholder="Edit Level of Dragonborn">
-          <label for="Edit Money">Edit Money</label>
-          <input type="text" class="form-control" id="edit-money" placeholder="Edit Amount of Money">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel Editing</button>
-          <button id="confirm-edit-button" type="button" class="btn btn-success">Edit Character</button>
+    <!-- Create Character Modal -->
+    <div class="modal fade" id="createModal" tabindex="-1" role="dialog" data-backdrop="static">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Create Character</h4>
+          </div>
+          <div class="modal-body">
+            <label for="Name">Name</label>
+            <input type="Name" class="form-control" id="name" placeholder="Enter name of Dragonborn">
+            <label for="Class">Class</label>
+            <select class="form-control" id="classType">
+              <option>Select a Class Type</option>
+              <option>Nord</option>
+              <option>Imperial</option>
+              <option>Redguard</option>
+              <option>Breton</option>
+              <option>Argonian</option>
+              <option>Khajiit</option>
+              <option>Dunmer</option>
+              <option>Altmer</option>
+              <option>Bosmer</option>
+              <option>Orsimer</option>
+            </select>
+            <label for="Gender">Gender</label>
+            <select class="form-control" id="gender">
+              <option>Gender</option>
+              <option>Male</option>
+              <option>Female</option>
+            </select>
+            <!--<input type="Gender" class="form-control" id="gender">-->
+            <label for="Level">Level</label>
+            <input type="Level" class="form-control" id="level" placeholder="Enter Level of Dragonborn">
+            <label for="Money">Money</label>
+            <input type="text" class="form-control" id="money" placeholder="Enter Amount of Money">
+          </div>
+          <div class="modal-footer">
+            <button id="confirm-random-create-button"type="button" class="btn btn-warning pull-left" data-dismiss="modal" id="CharacterSpawner">Spawn Random Character</button>
+            <button id="cancel-create-button" type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            <button id="confirm-create-button" type="button" class="btn btn-success">Create Character</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Delete Character Modal -->
-  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Are you sure that you want to delete this character?</h4>
-        </div>
-        <div class="modal-body">
-          Deleting a character is permanent and <strong>cannot be undone</strong>.
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Don't Delete</button>
-          <button id="confirm-delete-button" type="button" class="btn btn-danger">Delete Character</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-
-  <!-- Help Modal --> 
-  <div class="modal fade" id="helpModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title"><span class="glyphicon glyphicon-info-sign"></span> Help</h4>
-        </div>
-        <div class="modal-body">
-          <p>Welcome to the Skyrim Character Creator. To <strong>create a new character</strong>, click the create character button. After entering in a <em>name, race, gender, skin tone, and weight,</em> you will be able to play around with the character's inventory. You can also spawn a character at random by clicking the "Spawn Random Character" button in the pop-up create window.</p>
-          <p>You are also allowed to have <strong>multiple characters</strong>. Create as many as you would like, and this site will keep track of their skill stats and items.</p>
-          <p>To <strong>edit a character</strong>, you may either select the checkbox and click "Edit Character" or click directly on the character's name. It will redirect you to their skills and inventory page, with more detailed information on your current Dragonborn hero.</p>
-          <p>If one of your characters are growing old (Perhaps like "An arrow to the knee") and you are losing interest in him/her, it may be time to part ways with your once-beloved hero. To <strong>delete a character</strong>, check the box next to their name and click <em>delete</em>. Don't worry, either; <em><strong>we will make sure your character can be deleted only after a confirmation page!</strong></em></p>
-          <p>I hope you enjoy the character creation suite! Fus ro Dah!</p>
-        </div>
-        <div class="modal-footer">
-          <button id="close-help-button" type="button" class="btn btn-primary">Thanks!</button>
+    <!-- Edit Character Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" data-backdrop="static">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Edit Character</h4>
+          </div>
+          <div class="modal-body">
+            <label for="Edit Name">Edit Name</label>
+            <input type="Name" class="form-control" id="edit-name" placeholder="Edit name of Dragonborn">
+            <label for="Class">Edit Class</label>
+            <select class="form-control" id="edit-classType">
+              <option>Edit Class Type</option>
+              <option>Nord</option>
+              <option>Imperial</option>
+              <option>Redguard</option>
+              <option>Breton</option>
+              <option>Argonian</option>
+              <option>Khajiit</option>
+              <option>Dunmer</option>
+              <option>Altmer</option>
+              <option>Bosmer</option>
+              <option>Orsimer</option>
+            </select>
+            <label for="Edit Gender">Edit Gender</label>
+            <select class="form-control" id="edit-gender">
+              <option>Edit Gender</option>
+              <option>Male</option>
+              <option>Female</option>
+            </select>
+            <label for="Edit Level">Edit Level</label>
+            <input type="Level" class="form-control" id="edit-level" placeholder="Edit Level of Dragonborn">
+            <label for="Edit Money">Edit Money</label>
+            <input type="text" class="form-control" id="edit-money" placeholder="Edit Amount of Money">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel Editing</button>
+            <button id="confirm-edit-button" type="button" class="btn btn-success">Edit Character</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+
+    <!-- Delete Character Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Are you sure that you want to delete this character?</h4>
+          </div>
+          <div class="modal-body">
+            Deleting a character is permanent and <strong>cannot be undone</strong>.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Don't Delete</button>
+            <button id="confirm-delete-button" type="button" class="btn btn-danger">Delete Character</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Help Modal --> 
+    <div class="modal fade" id="helpModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title"><span class="glyphicon glyphicon-info-sign"></span> Help</h4>
+          </div>
+          <div class="modal-body">
+            <p>Welcome to the Skyrim Character Creator. To <strong>create a new character</strong>, click the create character button. After entering in a <em>name, race, gender, skin tone, and weight,</em> you will be able to play around with the character's inventory. You can also spawn a character at random by clicking the "Spawn Random Character" button in the pop-up create window.</p>
+            <p>You are also allowed to have <strong>multiple characters</strong>. Create as many as you would like, and this site will keep track of their skill stats and items.</p>
+            <p>To <strong>edit a character</strong>, you may either select the checkbox and click "Edit Character" or click directly on the character's name. It will redirect you to their skills and inventory page, with more detailed information on your current Dragonborn hero.</p>
+            <p>If one of your characters are growing old (Perhaps like "An arrow to the knee") and you are losing interest in him/her, it may be time to part ways with your once-beloved hero. To <strong>delete a character</strong>, check the box next to their name and click <em>delete</em>. Don't worry, either; <em><strong>we will make sure your character can be deleted only after a confirmation page!</strong></em></p>
+            <p>I hope you enjoy the character creation suite! Fus ro Dah!</p>
+          </div>
+          <div class="modal-footer">
+            <button id="close-help-button" type="button" class="btn btn-primary">Thanks!</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//code.jquery.com/jquery.js"></script>
