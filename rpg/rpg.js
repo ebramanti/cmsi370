@@ -1,40 +1,6 @@
 // Big things have small beginnings...
 $(function () {
 
-    $("#confirm-delete-button").click(function () {
-        var values = $('input:checkbox:checked.edit-delete-checkbox').map(function () {
-            return this.value;
-        }).get(); // ["18", "55", "10"]
-        console.log(values.length);
-        console.log(values);
-        var k = 0;
-        values.forEach(function(value, i) {   
-            $.ajax({
-                type: 'DELETE',
-                url: "http://lmu-diabolical.appspot.com/characters/" + values[i].toString(),
-                success: function (data, textStatus, jqXHR) {
-                    console.log("Gone baby gone.");
-                    window.location = "index.html";
-                }
-            });
-            console.log(values[i]);
-        });
-        console.log("Delete confirmed!!!!!");
-        // Now we dismiss the dialog.
-        $('#deleteModal').modal('hide');
-
-    });
-
-    $("#close-help-button").click(function () {
-        console.log("Help close confirmed!!!!!");
-        $('#helpModal').modal('hide');
-    });
-
-    $("#close-inventory-help-button").click(function () {
-        console.log("Inventory help close confirmed!!!!!");
-        $('#inventoryHelpModal').modal('hide');
-    });
-
     $("#confirm-create-button").click(function () {
         var newCharacter = {
             name:$("#name").val(),
@@ -64,15 +30,7 @@ $(function () {
         $('#createModal').modal('hide');
     });
 
-    $("#createModal").on("hidden.bs.modal", function() {
-        console.log("Dang son");
-        $("#name").val("");
-        $("#classType").removeClass("active");
-        $("#gender").removeClass("active");
-        $("#level").val("");
-        $("#money").val("");
-    });
-
+    
     $("#confirm-edit-button").click(function () {
         var value = $('input:checkbox:checked.edit-delete-checkbox').val();
         console.log(value);
@@ -97,7 +55,34 @@ $(function () {
         });
         $('#editModal').modal('hide');
     });
-    $("#confirm-random-create-button").click(function () { //not working
+
+    $("#confirm-delete-button").click(function () {
+        var values = $('input:checkbox:checked.edit-delete-checkbox').map(function () {
+            return this.value;
+        }).get(); // ["18", "55", "10"]
+        console.log(values.length);
+        console.log(values);
+        var k = 0;
+        values.forEach(function(value, i) {   
+            $.ajax({
+                type: 'DELETE',
+                url: "http://lmu-diabolical.appspot.com/characters/" + values[i].toString(),
+                success: function (data, textStatus, jqXHR) {
+                    console.log("Gone baby gone.");
+                    //window.location = "index.html";
+                    $("#" + values[i].remove());
+
+                }
+            });
+            console.log(values[i]);
+        });
+        console.log("Delete confirmed!!!!!");
+        // Now we dismiss the dialog.
+        $('#deleteModal').modal('hide');
+
+    });
+
+    $("#confirm-random-create-button").click(function () {
         var globalJsonVar;
         $.getJSON("http://lmu-diabolical.appspot.com/characters/spawn", 
             function (character) {
@@ -124,24 +109,43 @@ $(function () {
         );
     });
 
-    $("#confirm-delete-item-button").click(function () {
-        // Now we dismiss the dialog.
-        $('#deleteItemModal').modal('hide');
+    $("#close-help-button").click(function () {
+        console.log("Help close confirmed!!!!!");
+        $('#helpModal').modal('hide');
     });
 
-    $("#confirm-create-item-button").click(function () {
+    $("#close-inventory-help-button").click(function () {
+        console.log("Inventory help close confirmed!!!!!");
+        $('#inventoryHelpModal').modal('hide');
+    });
+
+    $("#createModal").on("hidden.bs.modal", function() {
+        console.log("Dang son");
+        $("#name").val("");
+        $("#classType").removeClass("active");
+        $("#gender").removeClass("active");
+        $("#level").val("");
+        $("#money").val("");
+    });
+
+    $("#confirm-create-item-button").click(function () { //not implemented, just placeholder
         console.log("Create confirmed!");
         $('#createItemModal').modal('hide');
     });
 
-    // an attempt to disable the edit button when there are more than 2 things selected.
+    $("#confirm-delete-item-button").click(function () { //not implemented, just placeholder
+        // Now we dismiss the dialog.
+        $('#deleteItemModal').modal('hide');
+    });
+
+    // An attempt to disable the edit button when there are more than 2 things selected.
     if ($('.container').find(':checked').length >= 2) {
         console.log("Yo");
         $("#edit-button").attr("disabled", "disabled");
     }
-        var characterRowTemplate = '<tr>' +
+        var characterRowTemplate = '<tr id="">' +
             '<td><input type="checkbox" class="edit-delete-checkbox" value=""></td>' +
-            '<td><a href="character.html#"></a></td>' +
+            '<td><a href=""></a></td>' +
             '<td></td>' +
             '<td></td>' +
             '<td></td>' +
@@ -154,8 +158,9 @@ $(function () {
             // Do something with the character list.
             characters.forEach(function (character) {
                 var $characterRow = $(characterRowTemplate);
+                $characterRow.find("tr").attr("id", character.id);
                 $characterRow.find("td:nth-child(1) > input")
-                    .attr({ value: character.id })
+                    .attr({ value: character.id });
                 $characterRow.find("td:nth-child(2) > a")
                     .attr({ href: "character.html#" + character.id })
                     .text(character.name);
@@ -163,9 +168,8 @@ $(function () {
                 $characterRow.find("td:nth-child(3)").text(character.classType);
                 $characterRow.find("td:nth-child(4)").text(character.gender.substr(0, 1).toUpperCase() + character.gender.substr(1).toLowerCase());
                 $characterRow.find("td:nth-child(5)").text(character.level);
-                $characterRow.find("td:nth-child(6)").text(character.money)
+                $characterRow.find("td:nth-child(6)").text(character.money);
                 $("#character-table > tbody").append($characterRow);
             });
         });
-
 });
