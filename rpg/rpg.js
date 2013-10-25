@@ -18,15 +18,9 @@ $(function () {
             dataType: "json",
             accept: "application/json",
             complete: function (jqXHR, textStatus) {
-                // The new character can be accessed from the Location header.
-                console.log("You may access the new character at:" +
-                    jqXHR.getResponseHeader("Location"));
-                //window.location = "character.html#" + jqXHR.getResponseHeader("Location");
-                window.location = "index.html";
+                window.location = "index.html"; //left in, had difficulty implementing live update
             }
         });
-        console.log("Create confirmed!");
-        //characterList();
         $('#createModal').modal('hide');
     });
 
@@ -49,8 +43,7 @@ $(function () {
             dataType: "json",
             accept: "application/json",
             success: function (data, textStatus, jqXHR) {
-                console.log("Done: no news is good news.");
-                window.location = "index.html";
+                window.location = "index.html"; //left in, had difficulty implementing live update
             }
         });
         $('#editModal').modal('hide');
@@ -68,65 +61,61 @@ $(function () {
                 type: 'DELETE',
                 url: "http://lmu-diabolical.appspot.com/characters/" + values[i].toString(),
                 success: function (data, textStatus, jqXHR) {
-                    console.log("Gone baby gone.");
-                    //window.location = "index.html";
-                    $("#" + values[i].remove());
+                    window.location = "index.html"; //left in, had difficulty implementing live update
+                    /*
+                     * My attempt at adding a live delete update from class.
+                     * $("#" + values[i].remove());
+                     *
+                     */
 
                 }
             });
-            console.log(values[i]);
         });
-        console.log("Delete confirmed!!!!!");
-        // Now we dismiss the dialog.
         $('#deleteModal').modal('hide');
 
     });
 
     $("#confirm-random-create-button").click(function () {
-        var globalJsonVar;
+        var randomCharacter;
         $.getJSON("http://lmu-diabolical.appspot.com/characters/spawn", 
             function (character) {
-                globalJsonVar = character;
-                console.log(JSON.stringify(character));
-                console.log(JSON.stringify(globalJsonVar));
+                randomCharacter = character;
                 $.ajax({
                     type: 'POST',
                     url: "http://lmu-diabolical.appspot.com/characters",
-                    data: JSON.stringify(globalJsonVar),
+                    data: JSON.stringify(randomCharacter),
                     contentType: "application/json",
                     dataType: "json",
                     accept: "application/json",
                     complete: function (jqXHR, textStatus) {
-                        // The new character can be accessed from the Location header.
-                        console.log("You may access the new character at:" +
-                            jqXHR.getResponseHeader("Location"));
-                        //window.location = "character.html#" + jqXHR.getResponseHeader("Location");
-                        window.location = "index.html";
+                        window.location = "index.html"; //left in, had difficulty implementing live update
                     }
                 });
-                console.log("Random create confirmed!");
             }
         );
+        $('#createModal').modal('hide');
     });
 
     $("#close-help-button").click(function () {
-        console.log("Help close confirmed!!!!!");
         $('#helpModal').modal('hide');
     });
-
+    
     $("#createModal").on("hidden.bs.modal", function() {
-        console.log("Dang son");
         $("#name").val("");
-        $("#classType").removeClass("active");
-        $("#gender").removeClass("active");
+        $("#classType").val("Select a Class Type");
+        $("#gender").val("Gender");
         $("#level").val("");
         $("#money").val("");
     });
-    // An attempt to disable the edit button when there are more than 2 things selected.
-    if ($('.container').find(':checked').length >= 2) {
-        console.log("Yo");
-        $("#edit-button").attr("disabled", "disabled");
-    }
+
+    $("#editModal").on("hidden.bs.modal", function() {
+        $("#edit-name").val("");
+        $("#edit-classType").val("Edit Class Type");
+        $("#edit-gender").val("Edit Gender");
+        $("#edit-level").val("");
+        $("#edit-money").val("");
+    });
+
         var characterRowTemplate = '<tr id="">' +
             '<td><input type="checkbox" class="edit-delete-checkbox" value=""></td>' +
             '<td><a href=""></a></td>' +
@@ -142,7 +131,12 @@ $(function () {
             // Do something with the character list.
             characters.forEach(function (character) {
                 var $characterRow = $(characterRowTemplate);
-                $characterRow.find("tr").attr("id", character.id);
+                /*
+                 * Had difficulty adding id to tr, so left unimplemented.
+                 * Here is a sample of my logic, but it wouldn't work...
+                 *
+                 * $characterRow.find("tr").attr("id", character.id);
+                 */
                 $characterRow.find("td:nth-child(1) > input")
                     .attr({ value: character.id });
                 $characterRow.find("td:nth-child(2) > a")

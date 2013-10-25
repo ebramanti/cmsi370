@@ -8,6 +8,20 @@ $(function () {
         $('#editItemModal').modal('hide');
     });
 
+    $("#createItemModal").on("hidden.bs.modal", function() {
+        $("#item-name").val("");
+        $("#item-damage").val("");
+        $("#item-weight").val("");
+        $("#item-value").val("");
+    });
+
+    $("#editItemModal").on("hidden.bs.modal", function() {
+        $("#edit-item-name").val("");
+        $("#edit-item-damage").val("");
+        $("#edit-item-weight").val("");
+        $("#edit-item-value").val("");
+    });
+
     $("#confirm-delete-item-button").click(function () { //not implemented, just placeholder
         $('#deleteItemModal').modal('hide');
     });
