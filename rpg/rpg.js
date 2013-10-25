@@ -1,6 +1,6 @@
 // Big things have small beginnings...
 $(function () {
-
+    //Creates a character.
     $("#confirm-create-button").click(function () {
         var newCharacter = {
             name:$("#name").val(),
@@ -24,7 +24,7 @@ $(function () {
         $('#createModal').modal('hide');
     });
 
-    
+    //Edits a character.
     $("#confirm-edit-button").click(function () {
         var value = $('input:checkbox:checked.edit-delete-checkbox').val();
         console.log(value);
@@ -49,12 +49,11 @@ $(function () {
         $('#editModal').modal('hide');
     });
 
+    //Deletes a character.
     $("#confirm-delete-button").click(function () {
         var values = $('input:checkbox:checked.edit-delete-checkbox').map(function () {
             return this.value;
-        }).get(); // ["18", "55", "10"]
-        console.log(values.length);
-        console.log(values);
+        }).get();
         var k = 0;
         values.forEach(function(value, i) {   
             $.ajax({
@@ -75,6 +74,7 @@ $(function () {
 
     });
 
+    //Spawns a new, random character.
     $("#confirm-random-create-button").click(function () {
         var randomCharacter;
         $.getJSON("http://lmu-diabolical.appspot.com/characters/spawn", 
@@ -96,10 +96,12 @@ $(function () {
         $('#createModal').modal('hide');
     });
 
+    //Closes help modal.
     $("#close-help-button").click(function () {
         $('#helpModal').modal('hide');
     });
-    
+
+    //Clears create modal if cancelled.
     $("#createModal").on("hidden.bs.modal", function() {
         $("#name").val("");
         $("#classType").val("Select a Class Type");
@@ -108,6 +110,7 @@ $(function () {
         $("#money").val("");
     });
 
+    //Clears edit modal if cancelled.
     $("#editModal").on("hidden.bs.modal", function() {
         $("#edit-name").val("");
         $("#edit-classType").val("Edit Class Type");
@@ -116,6 +119,7 @@ $(function () {
         $("#edit-money").val("");
     });
 
+    //All the code below displays characters in the main table.
         var characterRowTemplate = '<tr id="">' +
             '<td><input type="checkbox" class="edit-delete-checkbox" value=""></td>' +
             '<td><a href=""></a></td>' +
@@ -128,7 +132,6 @@ $(function () {
         $.getJSON(
         "http://lmu-diabolical.appspot.com/characters",
         function (characters) {
-            // Do something with the character list.
             characters.forEach(function (character) {
                 var $characterRow = $(characterRowTemplate);
                 /*

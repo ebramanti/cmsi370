@@ -1,13 +1,16 @@
 $(function () {
 
+	//Creates an item.
     $("#confirm-create-item-button").click(function () { //not implemented, just placeholder
         $('#createItemModal').modal('hide');
     });
 
+    //Edits an item.
     $("#confirm-edit-item-button").click(function () { //not implemented, just placeholder
         $('#editItemModal').modal('hide');
     });
 
+    //Clears create item modal if cancelled.
     $("#createItemModal").on("hidden.bs.modal", function() {
         $("#item-name").val("");
         $("#item-damage").val("");
@@ -15,6 +18,7 @@ $(function () {
         $("#item-value").val("");
     });
 
+    //Clears edit item modal if cancelled.
     $("#editItemModal").on("hidden.bs.modal", function() {
         $("#edit-item-name").val("");
         $("#edit-item-damage").val("");
@@ -22,14 +26,17 @@ $(function () {
         $("#edit-item-value").val("");
     });
 
+    //Deletes an item.
     $("#confirm-delete-item-button").click(function () { //not implemented, just placeholder
         $('#deleteItemModal').modal('hide');
     });
 
+    //Closes inventory help.
     $("#close-inventory-help-button").click(function () {
         $('#inventoryHelpModal').modal('hide');
     });
 
+    //Gets attributes and displays them on the character page.
 	var attributeRowTemplate = "<tr>"+"<th>"+"</th>"+"<th>"+"</th>"+"<th>"+"</th>"+"<th>"+"</th>"+"</tr>"
     $.getJSON(
         "http://lmu-diabolical.appspot.com/characters/" + window.location.hash.substr(1),
