@@ -114,11 +114,6 @@ $(function () {
         $('#helpModal').modal('hide');
     });
 
-    $("#close-inventory-help-button").click(function () {
-        console.log("Inventory help close confirmed!!!!!");
-        $('#inventoryHelpModal').modal('hide');
-    });
-
     $("#createModal").on("hidden.bs.modal", function() {
         console.log("Dang son");
         $("#name").val("");
@@ -127,17 +122,6 @@ $(function () {
         $("#level").val("");
         $("#money").val("");
     });
-
-    $("#confirm-create-item-button").click(function () { //not implemented, just placeholder
-        console.log("Create confirmed!");
-        $('#createItemModal').modal('hide');
-    });
-
-    $("#confirm-delete-item-button").click(function () { //not implemented, just placeholder
-        // Now we dismiss the dialog.
-        $('#deleteItemModal').modal('hide');
-    });
-
     // An attempt to disable the edit button when there are more than 2 things selected.
     if ($('.container').find(':checked').length >= 2) {
         console.log("Yo");
