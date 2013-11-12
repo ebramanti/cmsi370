@@ -39,3 +39,12 @@
 .btn-left {
     margin-right: 102px;
 }
+
+.center-title {
+	text-align: center;
+}
+
+.center-image {
+    display: block;
+  	margin: 0 auto;
+}
