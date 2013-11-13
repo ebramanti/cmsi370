@@ -2,6 +2,7 @@ $(function () {
 
 	//Creates an item.
     $("#confirm-create-item-button").click(function () { //not implemented, just placeholder
+        // JD: Still, nice that you have the placeholder.
         $('#createItemModal').modal('hide');
     });
 
@@ -16,6 +17,10 @@ $(function () {
         $("#item-damage").val("");
         $("#item-weight").val("");
         $("#item-value").val("");
+        // JD: For constructs like this, you can consolidate:
+        //
+        // $("#item-name, #item-damage, #item-weight, #item-value").val("");
+
     });
 
     //Clears edit item modal if cancelled.

@@ -38,6 +38,11 @@
               <tr class="red">
                 <td>Archery</td>
                 <td>
+                  <!-- JD: Using document.write is convenient for pure mock-ups, but in the end
+                           they become more work than they're worth (especially if the mock-up
+                           eventually turns into a "real" web app.  You can accomplish the exact
+                           same effect, and yet also be prepared for "the real thing," in a
+                           specially-defined "populateCharacter" function. -->
                   <script>
                     document.write(Math.floor(Math.random()*100)+1);
                   </script>
@@ -183,6 +188,7 @@
           </table>
           </div>
           <div class="column-md-6">
+            <!-- JD: Hey, why is this here?  Stick in a .css file. -->
             <style type="text/css">
               .inventoryTable {width:50%;}
             </style>
@@ -208,6 +214,8 @@
                   <td><input type="checkbox" value="0"></td>  
                   <td>Iron Sword</td>
                   <td>
+                    <!-- JD: More of these document.write blocks.  Certainly use with caution (or not
+                             at all) in the future. -->
                     <script>
                       document.write(Math.floor(Math.random()*100)+1);
                     </script>

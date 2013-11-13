@@ -6,6 +6,7 @@
 	margin-right: 5px;
 }
 
+/* JD: Stay consistent with putting a space after the colon. */
 .red {
 	background-color:#ff3600;
 }

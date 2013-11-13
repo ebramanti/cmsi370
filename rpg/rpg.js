@@ -3,6 +3,7 @@ $(function () {
     //Creates a character.
     $("#confirm-create-button").click(function () {
         var newCharacter = {
+            // JD: For readability's sake, I suggest you add a space after your colons.
             name:$("#name").val(),
             classType:$("#classType").val(),
             gender:$("#gender").val().toUpperCase(),
@@ -19,6 +20,8 @@ $(function () {
             accept: "application/json",
             complete: function (jqXHR, textStatus) {
                 window.location = "index.html"; //left in, had difficulty implementing live update
+                // JD: Noted; you were probably hitting an early bug with the server,
+                //     which is fixed now.
             }
         });
         $('#createModal').modal('hide');
@@ -44,6 +47,8 @@ $(function () {
             accept: "application/json",
             success: function (data, textStatus, jqXHR) {
                 window.location = "index.html"; //left in, had difficulty implementing live update
+                // JD: This takes a little more code but it is certainly worth
+                //     doing when you have the time.
             }
         });
         $('#editModal').modal('hide');
@@ -66,7 +71,7 @@ $(function () {
                      * $("#" + values[i].remove());
                      *
                      */
-
+                    // JD: Looks like a good attempt; would be nice to see you finish this.
                 }
             });
         });
@@ -89,6 +94,8 @@ $(function () {
                     accept: "application/json",
                     complete: function (jqXHR, textStatus) {
                         window.location = "index.html"; //left in, had difficulty implementing live update
+                        // JD: Yay nested Ajax calls!  Essentially, here, you want to create
+                        //     a tr for the new character, then add that tr to the table.
                     }
                 });
             }
@@ -120,6 +127,8 @@ $(function () {
     });
 
     //All the code below displays characters in the main table.
+    // JD: This var block (and the statements after) should go out a level---I don't see any
+    //     containing code structure, do you?
         var characterRowTemplate = '<tr id="">' +
             '<td><input type="checkbox" class="edit-delete-checkbox" value=""></td>' +
             '<td><a href=""></a></td>' +
@@ -140,6 +149,8 @@ $(function () {
                  *
                  * $characterRow.find("tr").attr("id", character.id);
                  */
+                // JD: That didn't work because $characterRow itself is the tr!
+                //     Thus, what you want is $characterRow.attr({ id: character.id });
                 $characterRow.find("td:nth-child(1) > input")
                     .attr({ value: character.id });
                 $characterRow.find("td:nth-child(2) > a")
