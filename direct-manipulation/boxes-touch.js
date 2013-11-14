@@ -29,7 +29,6 @@ var BoxesTouch = {
             var divbox = '<div class="box" style="width: 0px; height: 0px; left:' + touch.pageX + 'px; top: ' + touch.pageY + 'px">' + '</div>';
             var createdBox = divbox;
             $("#drawing-area").append(createdBox);
-            //$("#drawing-area").addClass("green-background");
             (touch.creation) = $("div div:last-child");
             (touch.creation).addClass("creation-highlight");
             $("#drawing-area").find("div.box").each(function(index, element) {
@@ -37,6 +36,7 @@ var BoxesTouch = {
                 element.addEventListener("touchend", BoxesTouch.unhighlight, false);
             });
         });
+        event.stopPropagation();
     },
 
     /**
@@ -44,6 +44,7 @@ var BoxesTouch = {
      */
     trackDrag: function (event) {
         $.each(event.changedTouches, function (index, touch) {
+            event.preventDefault();
             // Don't bother if we aren't tracking anything.
             if (touch.target.movingBox) {
                 // Reposition the object.
@@ -52,7 +53,41 @@ var BoxesTouch = {
                     top: touch.pageY - touch.target.deltaY
                 });
             }
-        });
+
+            if (touch.creation) {
+                var createLeft, createTop, createWidth, createHeight;
+
+                if (touch.pageX < touch.initialX) {
+                    createLeft = touch.pageX;
+                    createWidth = touch.initialX - touch.pageX;
+                    if (touch.pageY < touch.initialY) {
+                        createTop = touch.pageY;
+                        createHeight = touch.initialY - touch.pageY;
+                    } else {
+                        createTop = touch.initialY;
+                        createHeight = touch.pageY - touch.initialY;
+                    }
+                } else {
+                    createLeft = touch.initialX;
+                    createWidth = touch.pageX - touch.initialX;
+                    if (touch.pageY < touch.initialY) {
+                        createTop = touch.pageY;
+                        createHeight = touch.initialY - touch.pageY;
+                    } else {
+                        createTop = touch.initialY;
+                        createHeight = touch.pageY - touch.initialY;
+                    }
+                }
+
+            touch.creation
+                    .offset({
+                        left: createLeft,
+                        top: createTop
+                    })
+                    .width(createWidth)
+                    .height(createHeight);
+            }
+    });
 
         // Don't do any touch scrolling.
         event.preventDefault();
@@ -69,6 +104,9 @@ var BoxesTouch = {
                 touch.target.movingBox = null;
             }
         });
+        if(touch.creation) {
+                touch.creatingbox = null;
+        }
     },
 
     /**
