@@ -1,4 +1,8 @@
 var BoxesTouch = {
+     // TODO:
+     // CREATION IDENTIFIER & BOX MINIMUM SIZE
+     // Creation identifier: Add identifier to object to prevent unstable highlight.
+     // Box minimum size: Add a condition that created boxes must be a certain size.
     /**
      * Sets up the given jQuery collection as the drawing area(s).
      */
