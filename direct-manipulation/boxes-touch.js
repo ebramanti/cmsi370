@@ -23,21 +23,17 @@ var BoxesTouch = {
 
     startCreate: function (event) {
         $.each(event.changedTouches, function(index, touch) {
-            //if (touch.pageX > 500 && touch.pageY > 500) {
             touch.initialX = touch.pageX;
             touch.initialY = touch.pageY;
-            var divbox = '<div class="box" style="width: 0px; height: 0px; left:' + touch.pageX + 'px; top: ' + touch.pageY + 'px">' + '</div>';
-            var createdBox = divbox;
+            var createdBox = '<div class="box" style="width: 0px; height: 0px; left:' + touch.pageX + 'px; top: ' + touch.pageY + 'px">' + '</div>';
+            //var createdBox = divbox;
             $("#drawing-area").append(createdBox);
-            (touch.creation) = $("div div:last-child");
-            (touch.creation).addClass("creation-highlight");
+            touch.creation = $("div div:last-child");
+            touch.creation.addClass("creation-highlight");
             $("#drawing-area").find("div.box").each(function(index, element) {
                 element.addEventListener("touchstart", BoxesTouch.startMove, false);
                 element.addEventListener("touchend", BoxesTouch.unhighlight, false);
             });
-            //}
-            //else {//f
-            //}
         });
         event.stopPropagation();
     },
@@ -106,10 +102,11 @@ var BoxesTouch = {
                 // touch.target.movingBox.
                 touch.target.movingBox = null;
             }
+            if(touch.creation) {
+                touch.creation.removeClass("creation-highlight");
+                touch.creation = null;
+            }
         });
-        if(touch.creation) {
-                touch.creatingbox = null;
-        }
     },
 
     /**
@@ -117,6 +114,7 @@ var BoxesTouch = {
      */
     unhighlight: function () {
         $(this).removeClass("box-highlight");
+
     },
 
     /**
