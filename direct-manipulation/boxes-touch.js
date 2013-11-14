@@ -23,9 +23,9 @@ var BoxesTouch = {
 
     startCreate: function (event) {
         $.each(event.changedTouches, function(index, touch) {
+            //if (touch.pageX > 500 && touch.pageY > 500) {
             touch.initialX = touch.pageX;
             touch.initialY = touch.pageY;
-
             var divbox = '<div class="box" style="width: 0px; height: 0px; left:' + touch.pageX + 'px; top: ' + touch.pageY + 'px">' + '</div>';
             var createdBox = divbox;
             $("#drawing-area").append(createdBox);
@@ -35,6 +35,9 @@ var BoxesTouch = {
                 element.addEventListener("touchstart", BoxesTouch.startMove, false);
                 element.addEventListener("touchend", BoxesTouch.unhighlight, false);
             });
+            //}
+            //else {//f
+            //}
         });
         event.stopPropagation();
     },
