@@ -55,9 +55,8 @@ var BoxesTouch = {
                     top: touch.pageY - touch.target.deltaY
                 });
                 //  Adds Deletion Highlight
-                if (!((touch.target.movingBox).hasClass("box-delete")) && 
-                    (touch.pageX - touch.target.deltaX > 512 || touch.pageY - touch.target.deltaY > 512 
-                    || touch.pageX - touch.target.deltaX < 0 || touch.pageY - touch.target.deltaY < 0)) {
+                if (touch.pageX - touch.target.deltaX > 512 || touch.pageY - touch.target.deltaY > 512 
+                    || touch.pageX - touch.target.deltaX < 0 || touch.pageY - touch.target.deltaY < 0) {
                     touch.target.movingBox.addClass("box-delete deletion-highlight");
                 }
                 
@@ -65,9 +64,8 @@ var BoxesTouch = {
                  * used if() instead of else() due to on-move oscillation between
                  * box-highlight and deletion-highlight with else() 
                  */
-                if (((touch.target.movingBox).hasClass("box-delete")) && 
-                    (touch.pageX - touch.target.deltaX < 512 && touch.pageY - touch.target.deltaY < 512 
-                    && touch.pageX - touch.target.deltaX > 0 && touch.pageY - touch.target.deltaY > 0)) {
+                if (touch.pageX - touch.target.deltaX < 512 && touch.pageY - touch.target.deltaY < 512 
+                    && touch.pageX - touch.target.deltaX > 0 && touch.pageY - touch.target.deltaY > 0) {
                     touch.target.movingBox.removeClass("box-delete deletion-highlight");
                 }
             }
