@@ -49,14 +49,21 @@ var BoxesTouch = {
             event.preventDefault();
             // Don't bother if we aren't tracking anything.
             if (touch.target.movingBox) {
+                var boxParent = $(touch.target.movingBox).parent(),
+                    parentWidth = boxParent.width(),
+                    parentHeight = boxParent.height();
+                    parentLeft = boxParent.offset().left,
+                    parentTop = boxParent.offset().top,
+                    parentRight = parentLeft + parentWidth,
+                    parentBottom = parentTop + parentHeight;
                 // Reposition the object.
                 touch.target.movingBox.offset ({
                     left: touch.pageX - touch.target.deltaX,
                     top: touch.pageY - touch.target.deltaY
                 });
                 //  Adds Deletion Highlight
-                if (touch.pageX - touch.target.deltaX > 512 || touch.pageY - touch.target.deltaY > 512 
-                    || touch.pageX - touch.target.deltaX < 0 || touch.pageY - touch.target.deltaY < 0) {
+                if (touch.pageX - touch.target.deltaX > parentRight || touch.pageY - touch.target.deltaY > parentBottom || 
+                    touch.pageX - touch.target.deltaX < parentLeft || touch.pageY - touch.target.deltaY < parentTop) {
                     touch.target.movingBox.addClass("box-delete deletion-highlight");
                 }
                 
@@ -64,8 +71,8 @@ var BoxesTouch = {
                  * used if() instead of else() due to on-move oscillation between
                  * box-highlight and deletion-highlight with else() 
                  */
-                if (touch.pageX - touch.target.deltaX < 512 && touch.pageY - touch.target.deltaY < 512 
-                    && touch.pageX - touch.target.deltaX > 0 && touch.pageY - touch.target.deltaY > 0) {
+                if (touch.pageX - touch.target.deltaX <= parentRight && touch.pageY - touch.target.deltaY <= parentBottom && 
+                    touch.pageX - touch.target.deltaX >= parentLeft && touch.pageY - touch.target.deltaY >= parentTop) {
                     touch.target.movingBox.removeClass("box-delete deletion-highlight");
                 }
             }
