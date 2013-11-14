@@ -10,6 +10,7 @@ var BoxesTouch = {
             // Event handler setup must be low-level because jQuery
             // doesn't relay touch-specific event properties.
             .each(function (index, element) {
+                element.addEventListener("touchstart", BoxesTouch.startCreate, false)
                 element.addEventListener("touchmove", BoxesTouch.trackDrag, false);
                 element.addEventListener("touchend", BoxesTouch.endDrag, false);
             })
@@ -18,6 +19,10 @@ var BoxesTouch = {
                 element.addEventListener("touchstart", BoxesTouch.startMove, false);
                 element.addEventListener("touchend", BoxesTouch.unhighlight, false);
             });
+    },
+
+    startCreate: function (event) {
+
     },
 
     /**
