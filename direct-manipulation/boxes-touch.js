@@ -2,11 +2,6 @@ $(function () {
     var cache = {};  // All, like, private-like.
 
     window.BoxesTouch = {
-         // TODO:
-         // CREATION IDENTIFIER & BOX MINIMUM SIZE
-         // Creation identifier: Add identifier to object to prevent unstable highlight.
-         // Box minimum size: Add a condition that created boxes must be a certain size.
-
         /**
          * Sets up the given jQuery collection as the drawing area(s).
          */
@@ -110,7 +105,7 @@ $(function () {
                         }
                     }
 
-                cacheEntry.creation
+                    cacheEntry.creation
                         .offset({
                             left: createLeft,
                             top: createTop
@@ -118,7 +113,7 @@ $(function () {
                         .width(createWidth)
                         .height(createHeight);
                 }
-        });
+            });
 
             // Don't do any touch scrolling.
             event.preventDefault();
@@ -129,7 +124,7 @@ $(function () {
          */
         endDrag: function (event) {
             $.each(event.changedTouches, function (index, touch) {
-                if(touch.target.movingBox) {
+                if (touch.target.movingBox) {
                     // Change state to "not-moving-anything" by clearing out
                     // touch.target.movingBox.
                     touch.target.movingBox = null;
@@ -139,7 +134,7 @@ $(function () {
                 if (cacheEntry && cacheEntry.creation) {
                     // Do we want to keep it?
                     var $creation = $(cacheEntry.creation);
-                    if ($creation.width() < 10) {
+                    if ($creation.width() < 20 || $creation.height() < 20) {
                         $creation.remove();
                     }
 
