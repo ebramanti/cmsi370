@@ -13,22 +13,14 @@ $(function () {
 
     //Clears create item modal if cancelled.
     $("#createItemModal").on("hidden.bs.modal", function() {
-        $("#item-name").val("");
-        $("#item-damage").val("");
-        $("#item-weight").val("");
-        $("#item-value").val("");
-        // JD: For constructs like this, you can consolidate:
-        //
-        // $("#item-name, #item-damage, #item-weight, #item-value").val("");
-
+        $("#item-name, #item-damage, #item-weight, #item-value").val("");
+        // EB: Consolidated the values into one line.
     });
 
     //Clears edit item modal if cancelled.
     $("#editItemModal").on("hidden.bs.modal", function() {
-        $("#edit-item-name").val("");
-        $("#edit-item-damage").val("");
-        $("#edit-item-weight").val("");
-        $("#edit-item-value").val("");
+        $("#edit-item-name, #edit-item-damage, #edit-item-weight, #edit-item-value").val("");
+        // EB: Here as well.
     });
 
     //Deletes an item.
