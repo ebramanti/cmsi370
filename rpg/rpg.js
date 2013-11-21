@@ -3,12 +3,12 @@ $(function () {
     //Creates a character.
     $("#confirm-create-button").click(function () {
         var newCharacter = {
-            // JD: For readability's sake, I suggest you add a space after your colons.
-            name:$("#name").val(),
-            classType:$("#classType").val(),
-            gender:$("#gender").val().toUpperCase(),
-            level:parseInt($("#level").val(), 10),
-            money:parseInt($("#money").val(), 10)
+            // EB: Fixed spaces next to colons throughout code.
+            name: $("#name").val(),
+            classType: $("#classType").val(),
+            gender: $("#gender").val().toUpperCase(),
+            level: parseInt($("#level").val(), 10),
+            money: parseInt($("#money").val(), 10)
         };
         console.log(newCharacter);
         $.ajax({
@@ -36,11 +36,11 @@ $(function () {
             url: "http://lmu-diabolical.appspot.com/characters/" + value,
             data: JSON.stringify({
                 id: value,
-                name:$("#edit-name").val(),
-                classType:$("#edit-classType").val(),
-                gender:$("#edit-gender").val().toUpperCase(),
-                level:parseInt($("#edit-level").val(), 10),
-                money:parseInt($("#edit-money").val(), 10)
+                name: $("#edit-name").val(),
+                classType: $("#edit-classType").val(),
+                gender: $("#edit-gender").val().toUpperCase(),
+                level: parseInt($("#edit-level").val(), 10),
+                money: parseInt($("#edit-money").val(), 10)
             }),
             contentType: "application/json",
             dataType: "json",
@@ -110,20 +110,16 @@ $(function () {
 
     //Clears create modal if cancelled.
     $("#createModal").on("hidden.bs.modal", function() {
-        $("#name").val("");
+        $("#name, #level, #money").val("");
         $("#classType").val("Select a Class Type");
         $("#gender").val("Gender");
-        $("#level").val("");
-        $("#money").val("");
     });
 
     //Clears edit modal if cancelled.
     $("#editModal").on("hidden.bs.modal", function() {
-        $("#edit-name").val("");
+        $("#edit-name, #edit-level, #edit-money").val("");
         $("#edit-classType").val("Edit Class Type");
         $("#edit-gender").val("Edit Gender");
-        $("#edit-level").val("");
-        $("#edit-money").val("");
     });
 
     //All the code below displays characters in the main table.
