@@ -6,17 +6,17 @@
 	margin-right: 5px;
 }
 
-/* JD: Stay consistent with putting a space after the colon. */
+/* EB: Fixed spaces after colon issue. */
 .red {
-	background-color:#ff3600;
+	background-color: #ff3600;
 }
 
 .green {
-	background-color:#c0ff00;
+	background-color: #c0ff00;
 }
 
 .blue {
-	background-color:#00a8ff;
+	background-color: #00a8ff;
 }
 
 .table-borderless td, .table-borderless th, .table-borderless tr {
@@ -25,7 +25,7 @@
 
 .btn-help{
   bottom: 15px;
-  float:left;
+  float: left;
   top: 15px;
 }
 
