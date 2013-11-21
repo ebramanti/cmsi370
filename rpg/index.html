@@ -8,24 +8,27 @@
     <link rel="shortcut icon" href="http://images4.wikia.nocookie.net/__cb62351/elderscrolls/images/6/64/Favicon.ico"/>
     <!-- My CSS -->
     <link rel="stylesheet" href="rpg.css">
-    <!-- JD: Content like the one below does not belong in head.  Put this in body,
-             and while you're at it, break it out into multiple lines with correct indents. -->
-    <div class="btn-group btn-help"><a id="help-button" data-toggle="modal" href="#helpModal" class="btn btn-lg"><span class="glyphicon glyphicon-info-sign"></span> <strong>Help</strong></a></div>
   </head>
   <body>
+    <!-- EB: Moved this content into body w/ correct indents. -->
+    <div class="btn-group btn-help">
+      <a id="help-button" data-toggle="modal" href="#helpModal" class="btn btn-lg">
+        <span class="glyphicon glyphicon-info-sign"></span>
+        <strong>Help</strong>
+      </a>
+    </div>
     <div class="container">
       <div class="row topOfPage">
-        <img src="http://www.polishtheconsole.com/wp-content/uploads/2011/09/TESSkyrimLogo.jpg" class="img-rounded center-image" height=160 width=300> <!-- JD: All attributes are typically in double-quotes, even numbers. -->
+        <img src="http://www.polishtheconsole.com/wp-content/uploads/2011/09/TESSkyrimLogo.jpg" class="img-rounded center-image" height="160" width="300"> <!-- EB: Added double quotes to width and height attributes. -->
         <h1 class="center-title">Character Creator</h1>
         <div class="btn-group btn-group-justified">
-          <!-- JD: You've switched from 2-space indents to 4 here.  Which is it? -->
-            <a id="create-button" data-toggle="modal" href="#createModal" class="btn btn-lg btn-success btn-block"><span class="glyphicon glyphicon-pencil"></span> Create Character</a>
-            <a id="edit-button" data-toggle="modal" class="btn btn-info btn-lg btn-block edit-button" href="#editModal"><span class="glyphicon glyphicon-edit"></span> Edit Character</a>
-            <a id="delete-button" data-toggle="modal" href="#deleteModal" class="btn btn-lg btn-danger btn-block delete-button"><span class="glyphicon glyphicon-trash"></span> Delete Character</a>
+          <!-- EB: Fixed indentation issue. -->
+          <a id="create-button" data-toggle="modal" href="#createModal" class="btn btn-lg btn-success btn-block"><span class="glyphicon glyphicon-pencil"></span> Create Character</a>
+          <a id="edit-button" data-toggle="modal" class="btn btn-info btn-lg btn-block edit-button" href="#editModal"><span class="glyphicon glyphicon-edit"></span> Edit Character</a>
+          <a id="delete-button" data-toggle="modal" href="#deleteModal" class="btn btn-lg btn-danger btn-block delete-button"><span class="glyphicon glyphicon-trash"></span> Delete Character</a>
         </div>
       </div>
       <table id="character-table" class="table table-striped">
-        <!-- JD: Oops, and we're back at 2 per indent.  Again, which is it? -->
         <thead>
           <tr>  
             <th>
