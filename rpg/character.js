@@ -116,7 +116,6 @@ $(function () {
 
         for (var i = 0; i < templateItems.length; i++) {
             var currentItem = templateItems[i];
-            console.log(currentItem);
             var $itemRow = $(itemRowTemplate);
             $itemRow.find("td:nth-child(1) > input").attr({ value: i });
             $itemRow.find("td:nth-child(2)").text(currentItem.name);
