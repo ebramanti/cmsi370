@@ -34,170 +34,18 @@
               </tr>
             </thead>
             <tbody>
-              <!-- Using "danger" for red, signifying attack skills. -->
-              <tr class="red">
-                <td>Archery</td>
-                <td>
-                  <!-- JD: Using document.write is convenient for pure mock-ups, but in the end
-                           they become more work than they're worth (especially if the mock-up
-                           eventually turns into a "real" web app.  You can accomplish the exact
-                           same effect, and yet also be prepared for "the real thing," in a
-                           specially-defined "populateCharacter" function. -->
-                  <script>
-                    document.write(Math.floor(Math.random()*100)+1);
-                  </script>
-                </td>
-              </tr>
-              <tr class="red">
-                <td>Heavy Armor</td>
-                <td>
-                  <script>
-                    document.write(Math.floor(Math.random()*100)+1);
-                  </script>
-                </td>
-              </tr>
-              <tr class="red">
-                <td>Block</td>
-                <td>
-                  <script>
-                    document.write(Math.floor(Math.random()*100)+1);
-                  </script>
-                </td>
-              </tr>
-              <tr class="red">
-                <td>Two-Handed</td>
-                <td>
-                  <script>
-                    document.write(Math.floor(Math.random()*100)+1);
-                  </script>
-                </td>
-              </tr>
-              <tr class="red">
-                <td>One-Handed</td>
-                <td>
-                  <script>
-                    document.write(Math.floor(Math.random()*100)+1);
-                  </script>
-                </td>
-              </tr>
-              <tr class="red">
-                <td>Smithing</td>
-                <td>
-                  <script>
-                    document.write(Math.floor(Math.random()*100)+1);
-                  </script>
-                </td>
-              </tr>
-              <tr class="green">
-                <td>Light Armor</td>
-                <td>
-                  <script>
-                    document.write(Math.floor(Math.random()*100)+1);
-                  </script>
-                </td>
-              </tr>
-              <tr class="green">
-                <td>Sneak</td>
-                <td>
-                  <script>
-                    document.write(Math.floor(Math.random()*100)+1);
-                  </script>
-                </td>
-              </tr>
-              <tr class="green">
-                <td>Lockpicking</td>
-                <td>
-                  <script>
-                    document.write(Math.floor(Math.random()*100)+1);
-                  </script>
-                </td>
-              </tr>
-              <tr class="green">
-                <td>Pickpocket</td>
-                <td>
-                  <script>
-                    document.write(Math.floor(Math.random()*100)+1);
-                  </script>
-                </td>
-              </tr>
-              <tr class="green">
-                <td>Speech</td>
-                <td>
-                  <script>
-                    document.write(Math.floor(Math.random()*100)+1);
-                  </script>
-                </td>
-              </tr>
-              <tr class="green">
-                <td>Alchemy</td>
-                <td>
-                  <script>
-                    document.write(Math.floor(Math.random()*100)+1);
-                  </script>
-                </td>
-              </tr>
-              <tr class="blue">
-                <td>Illusion</td>
-                <td>
-                  <script>
-                    document.write(Math.floor(Math.random()*100)+1);
-                  </script>
-                </td>
-              </tr>
-              <tr class="blue">
-                <td>Conjuration</td>
-                <td>
-                  <script>
-                    document.write(Math.floor(Math.random()*100)+1);
-                  </script>
-                </td>
-              </tr>
-              <tr class="blue">
-                <td>Destruction</td>
-                <td>
-                  <script>
-                    document.write(Math.floor(Math.random()*100)+1);
-                  </script>
-                </td>
-              </tr>
-              <tr class="blue">
-                <td>Restoration</td>
-                <td>
-                  <script>
-                    document.write(Math.floor(Math.random()*100)+1);
-                  </script>
-                </td>
-              </tr>
-              <tr class="blue">
-                <td>Alteration</td>
-                <td>
-                  <script>
-                    document.write(Math.floor(Math.random()*100)+1);
-                  </script>
-                </td>
-              </tr>
-              <tr class="blue">
-                <td>Enchanting</td>
-                <td>
-                  <script>
-                    document.write(Math.floor(Math.random()*100)+1);
-                  </script>
-                </td>
-              </tr>
+              <!-- EB: Moved entire skill body into a populateCharacter() function. -->
             </tbody>
           </table>
           </div>
           <div class="column-md-6">
-            <!-- JD: Hey, why is this here?  Stick in a .css file. -->
-            <style type="text/css">
-              .inventoryTable {width:50%;}
-            </style>
+            <!-- EB: Removed rogue style element, placed in .css -->
             <div class="btn-group">
               <a id="create-button" data-toggle="modal" href="#createItemModal" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-pencil"></span> Create Item</a>
               <a class="btn btn-info btn-lg" data-toggle="modal" href="#editItemModal"><span class="glyphicon glyphicon-edit"></span> Edit Item Attributes</a>
               <a id="delete-button" data-toggle="modal" href="#deleteItemModal" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete Item</a>
             </div>
-            <table class="table inventoryTable">
+            <table id = "inventorytable" class="inventorytable">
               <thead>
                 <h1><strong><em>Inventory</em></strong></h1>
                 <p><strong>A list of <em></em>items.</strong></p>
@@ -210,63 +58,7 @@
                 <th>Value</th>
               </thead>
               <tbody>
-                <tr>
-                  <td><input type="checkbox" value="0"></td>  
-                  <td>Iron Sword</td>
-                  <td>
-                    <!-- JD: More of these document.write blocks.  Certainly use with caution (or not
-                             at all) in the future. -->
-                    <script>
-                      document.write(Math.floor(Math.random()*100)+1);
-                    </script>
-                  </td>
-                  <td>9</td>
-                  <td>25</td>
-                </tr>
-                <tr>  
-                  <td><input type="checkbox" value="1"></td>
-                  <td>Steel Sword</td>
-                  <td>
-                    <script>
-                      document.write(Math.floor(Math.random()*100)+1);
-                    </script>
-                  </td>
-                  <td>10</td>
-                  <td>45</td>
-                </tr>
-                <tr>
-                  <td><input type="checkbox" value="2"></td>  
-                  <td>Orcish Sword</td>
-                  <td>
-                    <script>
-                      document.write(Math.floor(Math.random()*100)+1);
-                    </script>
-                  </td>
-                  <td>11</td>
-                  <td>75</td>
-                </tr>
-                <tr>
-                  <td><input type="checkbox" value="3"></td>  
-                  <td>Dwarven Sword</td>
-                  <td>
-                    <script>
-                      document.write(Math.floor(Math.random()*100)+1);
-                    </script>
-                  </td>
-                  <td>12</td>
-                  <td>125</td>
-                </tr>
-                <tr> 
-                  <td><input type="checkbox" value="4"></td> 
-                  <td>Nord Hero Sword</td>
-                  <td>
-                    <script>
-                      document.write(Math.floor(Math.random()*100)+1);
-                    </script>
-                  </td>
-                  <td>9</td>
-                  <td>135</td>
-                </tr>
+                <!-- EB: Moved entire item body into a populateCharacter() function. -->
               </tbody>
             </table>
           </div>
