@@ -37,6 +37,10 @@
 	color: black;
 }
 
+.inventoryTable {
+  width: 50%;
+}
+
 .btn-left {
     margin-right: 102px;
 }
