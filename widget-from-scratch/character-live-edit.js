@@ -1,5 +1,5 @@
 //CharacterLiveEdit.js, a JQuery plug-in that will allow live manipulation of given character attributes.
-//Used in-place-editor from dondi/bazaar as a starting point, and making a few edits to work well with what I want for RPG.
+//Used in-place-editor from dondi/bazaar as a starting point, and redesigned to work well with what I want for RPG.
 
 (function ($) {
     //  Injects overlay that occurs when editing text live (.
@@ -25,7 +25,7 @@
             //  Without parens, when clicking in testing would return Initial and rest below it.
             var $attributeEditor = $(this),
                 attributeOffset = $attributeEditor.offset(),
-                $input = $("<input>") //simplistic but perfect for fields on my RPG edit modal.
+                $input = $("<input>") //perfect for fields on my RPG edit modal.
                     .val($attributeEditor.text())
                     .blur(function (event) {
                             var $newInput = $(this);
