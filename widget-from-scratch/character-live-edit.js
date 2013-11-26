@@ -14,5 +14,10 @@
                 $(this).find("span.glyphicon.glyphicon-edit").remove();
             }
         )
+        .click(function (event) {
+            var $receiver = $this,
+                receiverOffset = $receiver.offset();
+                $input = $("<input>")
+        });
     }
 }(jQuery));
