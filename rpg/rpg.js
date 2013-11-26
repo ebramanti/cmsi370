@@ -27,6 +27,20 @@ $(function () {
         $('#createModal').modal('hide');
     });
 
+    $("#edit-button").click(function () {
+        var value = $('input:checkbox:checked.edit-delete-checkbox').val();
+
+        $.getJSON(
+            "http://lmu-diabolical.appspot.com/characters/" + value,
+            function (character) {
+                // Do something with the character.
+                $("#edit-name").append(character.name);
+                $("#edit-level").append(character.level);
+                $("#edit-money").append(character.money);
+            }
+        );
+    });
+
     //Edits a character.
     $("#confirm-edit-button").click(function () {
         var value = $('input:checkbox:checked.edit-delete-checkbox').val();
@@ -117,7 +131,7 @@ $(function () {
 
     //Clears edit modal if cancelled.
     $("#editModal").on("hidden.bs.modal", function() {
-        $("#edit-name, #edit-level, #edit-money").val("");
+        $("#edit-name, #edit-level, #edit-money").text("");
         $("#edit-classType").val("Edit Class Type");
         $("#edit-gender").val("Edit Gender");
     });
@@ -155,4 +169,5 @@ $(function () {
             $("#character-table > tbody").append($characterRow);
         });
     });
+
 });
