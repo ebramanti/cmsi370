@@ -54,7 +54,7 @@
                     })
                     .width($attributeEditor.width())
                     .height($attributeEditor.height() + 6);
-                $("body").append($editOverlay);
+                $(".modal-overlay").append($editOverlay);
                 $editOverlay.append($input);
                 $input.focus().select();
         });
