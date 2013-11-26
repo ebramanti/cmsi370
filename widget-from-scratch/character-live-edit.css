@@ -1,0 +1,16 @@
+.character-editor > i {
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.character-editor-overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.character-editor-overlay > input, .character-editor-overlay > textarea {
+    position: absolute;
+}
