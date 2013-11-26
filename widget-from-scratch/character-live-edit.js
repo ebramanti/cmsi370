@@ -13,43 +13,45 @@
                 //  Attempted to add string "Edit" to <span>, but would auto-add to live edit.
                 //  Could not figure out how to delete, best attempt:
                 //  $(this).find("span").text("");
-                $(this).append($("<span></span>").addClass("glyphicon glyphicon-edit"));
+                $(this).append($("<span></span>").addClass("character-live-edit glyphicon glyphicon-edit"));
             },
 
             function (event) {
-                $(this).find("span.glyphicon.glyphicon-edit").remove();
+                $(this).find("span.character-live-edit.glyphicon.glyphicon-edit").remove();
             }
         )
         .click(function (event) {
-            var $attributeEditor = $this,
+            //  Mental Note: "$this" must have parentheses. Reason: Will consider multiple elements otherwise.
+            //  Without parens, when clicking in testing would return Initial and rest below it.
+            var $attributeEditor = $(this),
                 attributeOffset = $attributeEditor.offset(),
-                $input = $("<input>")
+                $input = $("<input>") //simplistic but perfect for fields on my RPG edit modal.
                     .val($attributeEditor.text())
                     .blur(function (event) {
                             var $newInput = $(this);
                             $attributeEditor.text($newInput.val()); //new input from the user for edits
-                            $newInput.remove(); //remove edits after success
-                            $editOverlay.detach();
+                            $newInput.remove(); //remove edits from overlay after success
+                            $editOverlay.detach(); //goodbye!
                             if ($.isFunction(options.change)) {
                                 options.change.call($attributeEditor[0]);
                             }
                     })
 
                     .css({ 
-                            //Necessary for default size in editor; otherwise, style not preserved.
-                            fontSize: $attributeEditor.css('font-size'),
-                            fontStyle: $attributeEditor.css('font-style'),
-                            fontWeight: $attributeEditor.css('font-weight'),
-                            lineHeight: $attributeEditor.css('line-height')
-                        })
+                        //Necessary for default size in editor; otherwise, style not preserved.
+                        fontSize: $attributeEditor.css('font-size'),
+                        fontStyle: $attributeEditor.css('font-style'),
+                        fontWeight: $attributeEditor.css('font-weight'),
+                        lineHeight: $attributeEditor.css('line-height')
+                    })
 
                     .offset({
-                            //  Used from Bazaar code, necessary for offset to format properly.
-                            //  Puts text from newInput directly over attributeEditor.
-                            //  According to Dondi, very experimental.
-                            top: attributeOffset.top - 3 - $(window).scrollTop(),
-                            left: attributeOffset.left - 3
-                        })
+                        //  Used from Bazaar code, necessary for offset to format properly.
+                        //  Puts text from newInput directly over attributeEditor.
+                        //  According to Dondi, very experimental.
+                        top: attributeOffset.top - 3 - $(window).scrollTop(),
+                        left: attributeOffset.left - 3
+                    })
                     .width($attributeEditor.width())
                     .height($attributeEditor.height() + 6);
                 $("body").append($editOverlay);
