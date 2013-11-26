@@ -1,0 +1,20 @@
+.character-editor > i {
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.character-editor-overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+span.character-live-edit.glyphicon.glyphicon-edit {
+    margin-left: 0.5ex;
+}
+
+.character-editor-overlay > input, .character-editor-overlay > textarea {
+    position: absolute;
+}
