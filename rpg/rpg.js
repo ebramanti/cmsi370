@@ -37,6 +37,9 @@ $(function () {
                 $("#edit-name").append(character.name);
                 $("#edit-level").append(character.level);
                 $("#edit-money").append(character.money);
+                $("#edit-classType").val(character.classType);
+                $("#edit-gender").val(character.gender.substr(0, 1).toUpperCase() 
+                    + character.gender.substr(1).toLowerCase());
             }
         );
     });
@@ -45,16 +48,19 @@ $(function () {
     $("#confirm-edit-button").click(function () {
         var value = $('input:checkbox:checked.edit-delete-checkbox').val();
         console.log(value);
+        console.log($("#edit-name").text());
+        console.log($("#edit-level").text());
+        console.log($("#edit-money").text());
         $.ajax({
             type: 'PUT',
             url: "http://lmu-diabolical.appspot.com/characters/" + value,
             data: JSON.stringify({
                 id: value,
-                name: $("#edit-name").val(),
+                name: $("#edit-name").text(),
                 classType: $("#edit-classType").val(),
                 gender: $("#edit-gender").val().toUpperCase(),
-                level: parseInt($("#edit-level").val(), 10),
-                money: parseInt($("#edit-money").val(), 10)
+                level: parseInt($("#edit-level").text(), 10),
+                money: parseInt($("#edit-money").text(), 10)
             }),
             contentType: "application/json",
             dataType: "json",
