@@ -2,7 +2,7 @@
 //Used in-place-editor from dondi/bazaar as a starting point, and redesigned to work well with what I want for RPG.
 
 (function ($) {
-    //  Injects overlay that occurs when editing text live (.
+    //  Injects overlay that occurs when editing text live.
     var $editOverlay = $("<div></div>")
             .addClass("character-editor-overlay");
     $.fn.characterLiveEdit = function(options) {
