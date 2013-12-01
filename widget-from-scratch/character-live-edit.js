@@ -25,20 +25,28 @@
             //  Without parens, when clicking in testing would return Initial and rest below it.
             var $attributeEditor = $(this),
                 attributeOffset = $attributeEditor.offset(),
-                $input = $("<input>") //perfect for fields on my RPG edit modal.
+                $input = $("<input>") //    perfect for fields on my RPG edit modal.
                     .val($attributeEditor.text())
                     .blur(function (event) {
                             var $newInput = $(this);
-                            $attributeEditor.text($newInput.val()); //new input from the user for edits
-                            $newInput.remove(); //remove edits from overlay after success
-                            $editOverlay.detach(); //goodbye!
+                            //  Implemented a check for a complete deletion of input.
+                            //  For my application, a user must enter an input if the editor is to be effective.
+                            //  This will serve as a warning if no text is inputted for an edit.
+                            if ($newInput.val() == "") {
+                                $attributeEditor.text("Please enter attribute.");
+                            }
+                            else {
+                                $attributeEditor.text($newInput.val()); //new input from the user for edits
+                            }
+                            $newInput.remove(); //  remove edits from overlay after success
+                            $editOverlay.detach(); //   goodbye!
                             if ($.isFunction(options.change)) {
                                 options.change.call($attributeEditor[0]);
                             }
                     })
 
                     .css({ 
-                        //Necessary for default size in editor; otherwise, style not preserved.
+                        //  Necessary for default size in editor; otherwise, style not preserved.
                         fontSize: $attributeEditor.css('font-size'),
                         fontStyle: $attributeEditor.css('font-style'),
                         fontWeight: $attributeEditor.css('font-weight'),
