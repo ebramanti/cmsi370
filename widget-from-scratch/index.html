@@ -1,17 +1,49 @@
 <!DOCTYPE html>
 <html>
   <head>
-  	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Character Live Edit</title>
     <link rel="stylesheet" href="character-live-edit.css">
     <link rel="stylesheet"
           href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
   </head>
   <body>
-    <h1> Inspired from the Bazaar's In-Place Editor, I designed a similar model so users of my RPG Creator have the functionality to manipulate their inputs live. In RPG, I implemented a new function that calls the current values of name, level and money. The widget will be implemented among these values, so users feel they have direct control over the character's name edits. Here are some examples of the functionality below. </h1>
-    <p class="character-text-edit">Initial Value</p>
-    <p class="character-text-edit">Initial Value 2</p>
-    <p class="character-text-edit">Initial Value 3</p>
+    <div class="container">
+      <h1> Inspired from the Bazaar's In-Place Editor, I designed a similar model so users of my RPG Creator have the functionality to manipulate their inputs live. In RPG, I implemented a new function that calls the current values of name, level and money. The widget will be implemented among these values, so users feel they have direct control over the character's name edits. Here are some examples of the functionality below. </h1>
+      <a id="edit-button" data-toggle="modal" class="btn btn-info btn-lg btn-block edit-button" href="#editModal"><span class="glyphicon glyphicon-edit"></span> Edit Character</a>
+    </div>
+    <!-- EXAMPLE CODE FROM SKYRIM CHARACTER CREATOR -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" data-backdrop="static">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Try clicking one of the text values below to edit live.</h4>
+          </div>
+          <div class="modal-body" id="edit-modal-body">
+            <label for="Edit Name">Edit Name</label>
+            <!--<input type="Name" class="form-control" id="edit-name" placeholder="Edit name of Dragonborn"> -->
+            <p class="character-text-edit" id="edit-name">Edward Bramanti</p>
+            <label for="Class">Edit Class</label>
+            <select class="form-control" id="edit-classType">
+              <option>EXAMPLE</option>
+            </select>
+            <label for="Edit Gender">Edit Gender</label>
+            <select class="form-control" id="edit-gender">
+              <option>Male</option>
+              <option>Female</option>
+            </select>
+            <label for="Edit Level">Edit Level</label>
+            <p class="character-text-edit" id="edit-level">0</p>
+            <label for="Edit Money">Edit Money</label>
+            <p class="character-text-edit" id="edit-money">0</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel Editing</button>
+            <button id="confirm-edit-button" type="button" class="btn btn-success">Edit Character</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="//code.jquery.com/jquery-latest.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
   	<script src="character-live-edit.js"></script>
