@@ -12,9 +12,9 @@ $(function () {
 
     //Clears edit modal if cancelled.
     $("#editModal").on("hidden.bs.modal", function() {
-        console.log("Clearing stuff son.");
-        $("#edit-name, #edit-level, #edit-money").text("");
-        $("#edit-classType").val("Edit Class Type");
-        $("#edit-gender").val("Edit Gender");
+        console.log("Example reset.");
+        $("#edit-name").text("Edward Bramanti");
+        $("#edit-level, #edit-money").text(0);
+        $("#edit-gender").val("Male");
     });
 });
