@@ -1,8 +1,3 @@
-.character-editor > i {
-    margin-left: 5px;
-    vertical-align: middle;
-}
-
 .character-editor-overlay {
     position: fixed;
     left: 0;
