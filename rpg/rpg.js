@@ -143,6 +143,12 @@ $(function () {
         $("#edit-gender").val("Edit Gender");
     });
 
+    $(".character-text-edit").characterLiveEdit ({
+        change: function () {
+            console.log($(this).text()); //Shows in console the changes made.
+        }
+    });
+
     // All the code below displays characters in the main table.
     // EB: Correctly formatted code structure.
     var characterRowTemplate = '<tr id="">' +
