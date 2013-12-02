@@ -4,12 +4,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Character Live Edit</title>
     <link rel="stylesheet" href="character-live-edit.css">
+    <link rel="stylesheet" href="demo-page.css">
     <link rel="stylesheet"
           href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
   </head>
   <body>
     <div class="container">
-      <h1> Inspired from the Bazaar's In-Place Editor, I designed a similar model so users of my RPG Creator have the functionality to manipulate their inputs live. In RPG, I implemented a new function that calls the current values of name, level and money. The widget will be implemented among these values, so users feel they have direct control over the character's name edits. Here are some examples of the functionality below. </h1>
+      <p>Inspired from the Bazaar's In-Place Editor, I designed a similar widget so users of my RPG Creator have the functionality to manipulate their inputs live. In RPG, I implemented an entirely new function: when a character is selected for edit, and the edit character button is select, the current values of name, level and money are updated into a text field. The in-place text editor allows users to dynamically update their character's name, level and money values, since these can be any value (as long as "Name" is a string, and level and money are positive integers).</p>
+      <p>The most important part of this widget is that it is specifically designed for Bootstrap's built-in modal interface. The offset of the text overlay dynamically updates to the position of the modal, even when resized. This will allow users on any resolution to be able to edit character attributes within a Bootstrap modal, as long as their browser supports it. Click <em>Edit Character</em> below to see the widget in action, and try resizing your browser window!</p>
       <a id="edit-button" data-toggle="modal" class="btn btn-info btn-lg btn-block edit-button" href="#editModal"><span class="glyphicon glyphicon-edit"></span> Edit Character</a>
     </div>
     <!-- EXAMPLE CODE FROM SKYRIM CHARACTER CREATOR -->
