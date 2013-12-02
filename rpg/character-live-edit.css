@@ -1,6 +1,6 @@
 .character-editor-overlay {
     position: fixed;
-    left: -390px; /*-390px, hardcoded fix that solves margin issue */
+    left: 0;
     top: 0;
     right: 0;
     bottom: 0;

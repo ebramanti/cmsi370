@@ -1,9 +1,6 @@
 //CharacterLiveEdit.js, a JQuery plug-in that will allow live manipulation of given character attributes.
 //Used in-place-editor from dondi/bazaar as a starting point, and redesigned to work well with what I want for RPG.
 
-//CharacterLiveEdit.js, a JQuery plug-in that will allow live manipulation of given character attributes.
-//Used in-place-editor from dondi/bazaar as a starting point, and redesigned to work well with what I want for RPG.
-
 (function ($) {
     //  Injects overlay that occurs when editing text live.
     var $editOverlay = $("<div></div>")
@@ -28,7 +25,7 @@
             //  Without parens, when clicking in testing would return Initial and rest below it.
             var $attributeEditor = $(this),
                 attributeOffset = $attributeEditor.offset(),
-                $input = $("<input>") //    perfect for fields on my RPG edit modal.
+                $input = $("<input>") //  perfect for fields on my RPG edit modal.
                     .val($attributeEditor.text())
                     .blur(function (event) {
                             var $newInput = $(this);
@@ -48,23 +45,18 @@
                             }
                     })
 
-                    .css({ 
-                        //  Necessary for default size in editor; otherwise, style not preserved.
-                        fontSize: $attributeEditor.css('font-size'),
-                        fontStyle: $attributeEditor.css('font-style'),
-                        fontWeight: $attributeEditor.css('font-weight'),
-                        lineHeight: $attributeEditor.css('line-height')
-                    })
-
                     .offset({
                         //  Used from Bazaar code, necessary for offset to format properly.
                         //  Puts text from newInput directly over attributeEditor.
                         //  According to Dondi, very experimental.
                         top: attributeOffset.top - 3 - $(window).scrollTop(),
-                        left: attributeOffset.left - 3
+                        //  YEAH BABY! Update the left offset dynamically by subtracting the offset of the modal.
+                        //  The 8 is hardcoded and may be unstable.
+                        left: attributeOffset.left - $("#edit-modal-body").offset().left + 8
                     })
                     .width($attributeEditor.width())
                     .height($attributeEditor.height() + 6);
+                //console.log($("#edit-modal-body").offset().left);
                 $("#edit-modal-body").append($editOverlay);
                 $editOverlay.append($input);
                 $input.focus().select();
