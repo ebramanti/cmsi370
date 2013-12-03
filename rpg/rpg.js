@@ -1,6 +1,6 @@
 // Big things have small beginnings...
 $(function () {
-    //Creates a character.
+    //  Creates a character.
     $("#confirm-create-button").click(function () {
         var newCharacter = {
             // EB: Fixed spaces next to colons throughout code.
@@ -27,6 +27,7 @@ $(function () {
         });
     });
 
+    // Adds data to edit modal for JQuery widget to use.
     $("#edit-button").click(function () {
         var value = $('input:checkbox:checked.edit-delete-checkbox').val();
         $.getJSON(
@@ -43,7 +44,7 @@ $(function () {
         );
     });
 
-    //Edits a character.
+    //  Edits a character.
     $("#confirm-edit-button").click(function () {
         var value = $('input:checkbox:checked.edit-delete-checkbox').val();
         console.log(value);
@@ -68,12 +69,12 @@ $(function () {
                 window.location = "index.html"; //left in, had difficulty implementing live update
                 // JD: This takes a little more code but it is certainly worth
                 //     doing when you have the time.
+                $('#editModal').modal('hide');
             }
         });
-        $('#editModal').modal('hide');
     });
 
-    //Deletes a character.
+    //  Deletes a character.
     $("#confirm-delete-button").click(function () {
         var values = $('input:checkbox:checked.edit-delete-checkbox').map(function () {
             return this.value;
@@ -83,13 +84,8 @@ $(function () {
                 type: 'DELETE',
                 url: "http://lmu-diabolical.appspot.com/characters/" + values[i].toString(),
                 success: function (data, textStatus, jqXHR) {
-                    //window.location = "index.html"; //left in, had difficulty implementing live update
-                    /*
-                     * My attempt at adding a live delete update from class.
-                     * $("#" + values[i].remove());
-                     *
-                     */
-                    // JD: Looks like a good attempt; would be nice to see you finish this.
+                    //  EB: Corrected previously commented out code, 
+                    //      and implemented a live update delete.
                     $("#" + values[i]).remove();
                 }
             });
@@ -97,7 +93,7 @@ $(function () {
         $('#deleteModal').modal('hide'); //had to preserve because of forEach above.
     });
 
-    //Spawns a new, random character.
+    //  Spawns a new, random character.
     $("#confirm-random-create-button").click(function () {
         var randomCharacter;
         $.getJSON("http://lmu-diabolical.appspot.com/characters/spawn", 
@@ -122,12 +118,12 @@ $(function () {
         );
     });
 
-    //Closes help modal.
+    //  Closes help modal.
     $("#close-help-button").click(function () {
         $('#helpModal').modal('hide');
     });
 
-    //Clears create modal if cancelled.
+    //  Clears create modal if cancelled.
     $("#createModal").on("hidden.bs.modal", function() {
         console.log("Clearing stuff son.");
         $("#name, #level, #money").val("");
@@ -135,7 +131,7 @@ $(function () {
         $("#gender").val("Gender");
     });
 
-    //Clears edit modal if cancelled.
+    //  Clears edit modal if cancelled.
     $("#editModal").on("hidden.bs.modal", function() {
         console.log("Clearing stuff son.");
         $("#edit-name, #edit-level, #edit-money").text("");
@@ -143,19 +139,12 @@ $(function () {
         $("#edit-gender").val("Edit Gender");
     });
 
+    //  Callback for JQuery widget character-live-edit.
     $(".character-text-edit").characterLiveEdit ({
         change: function () {
             console.log($(this).text()); //Shows in console the changes made.
         }
     });
-    var characterRowTemplate = '<tr id="">' +
-        '<td><input type="checkbox" class="edit-delete-checkbox" value=""></td>' +
-        '<td><a href=""></a></td>' +
-        '<td></td>' +
-        '<td></td>' +
-        '<td></td>' +
-        '<td></td>' +
-      '</tr>';
         
     $.getJSON(
     "http://lmu-diabolical.appspot.com/characters",
