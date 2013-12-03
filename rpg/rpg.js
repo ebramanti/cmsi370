@@ -1,5 +1,47 @@
 // Big things have small beginnings...
 $(function () {
+
+    //  Moved template and row creator into a function.
+    function rowGenerator (character) {
+        var characterTemplate = character;
+        // All the code below displays characters in the main table.
+        // EB: Correctly formatted code structure.
+        var characterRowTemplate = '<tr id="">' +
+        '<td><input type="checkbox" class="edit-delete-checkbox" value=""></td>' +
+        '<td><a href=""></a></td>' +
+        '<td></td>' +
+        '<td></td>' +
+        '<td></td>' +
+        '<td></td>' +
+        '</tr>';
+        var $characterRow = $(characterRowTemplate);
+            /*
+             * EB: Added id to tr using JD's logic.
+             */
+            $characterRow.attr({ id: characterTemplate.id });
+            $characterRow.find("td:nth-child(1) > input")
+                .attr({ value: characterTemplate.id });
+            $characterRow.find("td:nth-child(2) > a")
+                .attr({ href: "character.html#" + characterTemplate.id })
+                .text(characterTemplate.name);
+            // For Class Type and Gender, I format the text so that the first letter is capital, and the rest lowercase, regardless of user input.
+            $characterRow.find("td:nth-child(3)").text(characterTemplate.classType);
+            $characterRow.find("td:nth-child(4)").text(characterTemplate.gender.substr(0, 1).toUpperCase() + character.gender.substr(1).toLowerCase());
+            $characterRow.find("td:nth-child(5)").text(characterTemplate.level);
+            $characterRow.find("td:nth-child(6)").text(characterTemplate.money);
+            $("#character-table > tbody").append($characterRow);
+    }
+
+    //  This builds the characters within the character table in index.html.
+    $.getJSON(
+        "http://lmu-diabolical.appspot.com/characters",
+        function (characters) {
+            characters.forEach(function (character) {
+                rowGenerator(character);
+            });
+        }
+    );
+
     //  Creates a character.
     $("#confirm-create-button").click(function () {
         var newCharacter = {
@@ -67,7 +109,9 @@ $(function () {
                 $(characterId).find("td:nth-child(2) > a")
                     .text($("#edit-name").text());
                 $(characterId).find("td:nth-child(3)").text($("#edit-classType").val());
-                $(characterId).find("td:nth-child(4)").text($("#edit-gender").val().substr(0, 1).toUpperCase() + $("#edit-gender").val().substr(1).toLowerCase());
+                $(characterId).find("td:nth-child(4)")
+                    .text($("#edit-gender").val().substr(0, 1).toUpperCase() + 
+                        $("#edit-gender").val().substr(1).toLowerCase());
                 $(characterId).find("td:nth-child(5)").text($("#edit-level").text());
                 $(characterId).find("td:nth-child(6)").text($("#edit-money").text());
                 $('#editModal').modal('hide'); // moved modal hide under success
@@ -146,45 +190,4 @@ $(function () {
             console.log($(this).text()); //Shows in console the changes made.
         }
     });
-        
-    $.getJSON(
-    "http://lmu-diabolical.appspot.com/characters",
-    function (characters) {
-        characters.forEach(function (character) {
-            rowGenerator(character);
-        });
-
-    });
-
-    //  Moved template and row creator into a function.
-    function rowGenerator (character) {
-        var characterTemplate = character;
-        // All the code below displays characters in the main table.
-        // EB: Correctly formatted code structure.
-        var characterRowTemplate = '<tr id="">' +
-        '<td><input type="checkbox" class="edit-delete-checkbox" value=""></td>' +
-        '<td><a href=""></a></td>' +
-        '<td></td>' +
-        '<td></td>' +
-        '<td></td>' +
-        '<td></td>' +
-        '</tr>';
-        var $characterRow = $(characterRowTemplate);
-            /*
-             * EB: Added id to tr using JD's logic.
-             */
-            $characterRow.attr({ id: characterTemplate.id });
-            $characterRow.find("td:nth-child(1) > input")
-                .attr({ value: characterTemplate.id });
-            $characterRow.find("td:nth-child(2) > a")
-                .attr({ href: "character.html#" + characterTemplate.id })
-                .text(characterTemplate.name);
-            //For Class Type and Gender, I format the text so that the first letter is capital, and the rest lowercase, regardless of user input.
-            $characterRow.find("td:nth-child(3)").text(characterTemplate.classType);
-            $characterRow.find("td:nth-child(4)").text(characterTemplate.gender.substr(0, 1).toUpperCase() + character.gender.substr(1).toLowerCase());
-            $characterRow.find("td:nth-child(5)").text(characterTemplate.level);
-            $characterRow.find("td:nth-child(6)").text(characterTemplate.money);
-            $("#character-table > tbody").append($characterRow);
-    }
-
 });
