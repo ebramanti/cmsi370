@@ -10,7 +10,6 @@ $(function () {
             level: parseInt($("#level").val(), 10),
             money: parseInt($("#money").val(), 10)
         };
-        console.log(newCharacter);
         $.ajax({
             type: 'POST',
             url: "http://lmu-diabolical.appspot.com/characters",
@@ -19,11 +18,10 @@ $(function () {
             dataType: "json",
             accept: "application/json",
             complete: function (jqXHR, textStatus) {
-                window.location = "index.html"; //left in, had difficulty implementing live update
-                // JD: Noted; you were probably hitting an early bug with the server,
-                //     which is fixed now.
-                var location = jqXHR.getResponseHeader("Location");
-                
+                //  window.location = "index.html";
+                //  EB: Successfully implemented live update instead of using method above.
+                console.log(jqXHR.getResponseHeader("Location"));
+                rowGenerator(newCharacter);   
             }
         });
         $('#createModal').modal('hide');
@@ -81,7 +79,6 @@ $(function () {
         var values = $('input:checkbox:checked.edit-delete-checkbox').map(function () {
             return this.value;
         }).get();
-        var k = 0;
         values.forEach(function(value, i) {   
             $.ajax({
                 type: 'DELETE',
@@ -115,9 +112,10 @@ $(function () {
                     dataType: "json",
                     accept: "application/json",
                     complete: function (jqXHR, textStatus) {
-                        window.location = "index.html"; //left in, had difficulty implementing live update
-                        // JD: Yay nested Ajax calls!  Essentially, here, you want to create
-                        //     a tr for the new character, then add that tr to the table.
+                        //  window.location = "index.html";
+                        //  EB: Like create, successfully implemented live update.
+                        console.log(jqXHR.getResponseHeader("Location"));
+                        rowGenerator(randomCharacter);
                     }
                 });
             }
