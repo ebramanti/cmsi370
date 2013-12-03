@@ -29,7 +29,6 @@ $(function () {
 
     $("#edit-button").click(function () {
         var value = $('input:checkbox:checked.edit-delete-checkbox').val();
-
         $.getJSON(
             "http://lmu-diabolical.appspot.com/characters/" + value,
             function (character) {
@@ -84,18 +83,18 @@ $(function () {
                 type: 'DELETE',
                 url: "http://lmu-diabolical.appspot.com/characters/" + values[i].toString(),
                 success: function (data, textStatus, jqXHR) {
-                    window.location = "index.html"; //left in, had difficulty implementing live update
+                    //window.location = "index.html"; //left in, had difficulty implementing live update
                     /*
                      * My attempt at adding a live delete update from class.
                      * $("#" + values[i].remove());
                      *
                      */
                     // JD: Looks like a good attempt; would be nice to see you finish this.
+                    $("#" + values[i]).remove();
                 }
             });
         });
-        $('#deleteModal').modal('hide');
-
+        $('#deleteModal').modal('hide'); //had to preserve because of forEach above.
     });
 
     //Spawns a new, random character.
@@ -130,6 +129,7 @@ $(function () {
 
     //Clears create modal if cancelled.
     $("#createModal").on("hidden.bs.modal", function() {
+        console.log("Clearing stuff son.");
         $("#name, #level, #money").val("");
         $("#classType").val("Select a Class Type");
         $("#gender").val("Gender");
