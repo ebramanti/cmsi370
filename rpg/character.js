@@ -77,7 +77,7 @@ $(function () {
         for (var i = 0; i < skills.length; i++) {
             var currentSkillSet = skills[i];
             var colorId;
-            switch(currentSkillSet) {
+            switch (currentSkillSet) {
                 case redSkills:
                     colorId = "red";
                     break;
