@@ -47,10 +47,6 @@ $(function () {
     //  Edits a character.
     $("#confirm-edit-button").click(function () {
         var value = $('input:checkbox:checked.edit-delete-checkbox').val();
-        console.log(value);
-        console.log($("#edit-name").text());
-        console.log($("#edit-level").text());
-        console.log($("#edit-money").text());
         $.ajax({
             type: 'PUT',
             url: "http://lmu-diabolical.appspot.com/characters/" + value,
@@ -66,10 +62,15 @@ $(function () {
             dataType: "json",
             accept: "application/json",
             success: function (data, textStatus, jqXHR) {
-                window.location = "index.html"; //left in, had difficulty implementing live update
-                // JD: This takes a little more code but it is certainly worth
-                //     doing when you have the time.
-                $('#editModal').modal('hide');
+                // EB: Implemented live update edit.
+                var characterId = "#" + value;
+                $(characterId).find("td:nth-child(2) > a")
+                    .text($("#edit-name").text());
+                $(characterId).find("td:nth-child(3)").text($("#edit-classType").val());
+                $(characterId).find("td:nth-child(4)").text($("#edit-gender").val().substr(0, 1).toUpperCase() + $("#edit-gender").val().substr(1).toLowerCase());
+                $(characterId).find("td:nth-child(5)").text($("#edit-level").text());
+                $(characterId).find("td:nth-child(6)").text($("#edit-money").text());
+                $('#editModal').modal('hide'); // moved modal hide under success
             }
         });
     });
