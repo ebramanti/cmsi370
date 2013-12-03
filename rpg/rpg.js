@@ -21,10 +21,10 @@ $(function () {
                 //  window.location = "index.html";
                 //  EB: Successfully implemented live update instead of using method above.
                 console.log(jqXHR.getResponseHeader("Location"));
-                rowGenerator(newCharacter);   
+                rowGenerator(newCharacter);
+                $('#createModal').modal('hide');   
             }
         });
-        $('#createModal').modal('hide');
     });
 
     $("#edit-button").click(function () {
@@ -116,11 +116,11 @@ $(function () {
                         //  EB: Like create, successfully implemented live update.
                         console.log(jqXHR.getResponseHeader("Location"));
                         rowGenerator(randomCharacter);
+                        $('#createModal').modal('hide');
                     }
                 });
             }
         );
-        $('#createModal').modal('hide');
     });
 
     //Closes help modal.
