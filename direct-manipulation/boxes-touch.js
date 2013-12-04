@@ -1,5 +1,6 @@
 $(function () {
     var cache = {};  // All, like, private-like.
+    // JD: Yep, private-like is the right like :)
 
     window.BoxesTouch = {
         /**
@@ -31,10 +32,32 @@ $(function () {
 
                 cacheEntry.initialX = touch.pageX;
                 cacheEntry.initialY = touch.pageY;
+
+                // JD: Alternatively, you can define this "template" as a standalone
+                //     string at the top, then set its attributes via jQuery, e.g.:
+                //
+                //     ...
+                //     TEMP_BOX_TEMPLATE: '<div class="box"></div>';
+                //
+                //     ...
+                //
+                //     var $createdBox = $(BoxesTouch.TEMP_BOX_TEMPLATE).css({
+                //         width: "0px",
+                //         height: "0px",
+                //         left: touch.pageX + "px",
+                //         top: touch.pageY + "px"
+                //     });
+                //
+                //     ...
+                //
+                //     You may find this approach to be a little more readable and
+                //     less error-prone.
+                //
                 var createdBox = '<div class="box" style="width: 0px; height: 0px; left:' + touch.pageX + 'px; top: ' + touch.pageY + 'px">' + '</div>';
                 $("#drawing-area").append(createdBox);
                 cacheEntry.creation = $("div div:last-child");
                 cacheEntry.creation.addClass("creation-highlight");
+                // JD: Space after "function" please----------->
                 $("#drawing-area").find("div.box").each(function(index, element) {
                     element.addEventListener("touchstart", BoxesTouch.startMove, false);
                     element.addEventListener("touchend", BoxesTouch.unhighlight, false);
@@ -58,12 +81,15 @@ $(function () {
                         parentTop = boxParent.offset().top,
                         parentRight = parentLeft + parentWidth,
                         parentBottom = parentTop + parentHeight;
+
                     // Reposition the object.
                     touch.target.movingBox.offset ({
                         left: touch.pageX - touch.target.deltaX,
                         top: touch.pageY - touch.target.deltaY
                     });
+
                     //  Adds Deletion Highlight
+                    // JD: Nice non-hardcoded drawing area :)
                     if (touch.pageX - touch.target.deltaX > parentRight || touch.pageY - touch.target.deltaY > parentBottom || 
                         touch.pageX - touch.target.deltaX < parentLeft || touch.pageY - touch.target.deltaY < parentTop) {
                         touch.target.movingBox.addClass("box-delete deletion-highlight");
@@ -86,6 +112,7 @@ $(function () {
                     if (touch.pageX < cacheEntry.initialX) {
                         createLeft = touch.pageX;
                         createWidth = cacheEntry.initialX - touch.pageX;
+                        // JD: Some code duplication with the Y computations.  Pull out to a function maybe?
                         if (touch.pageY < cacheEntry.initialY) {
                             createTop = touch.pageY;
                             createHeight = cacheEntry.initialY - touch.pageY;
@@ -134,6 +161,10 @@ $(function () {
                 if (cacheEntry && cacheEntry.creation) {
                     // Do we want to keep it?
                     var $creation = $(cacheEntry.creation);
+                    // JD: Yay, minimum size check!  To give "20" this meaning, it would probably
+                    //     be good to stick it as another "private" variable like:
+                    //
+                    //     var MINIMUM_WIDTH = 20, MINIMUM_HEIGHT = 20;
                     if ($creation.width() < 20 || $creation.height() < 20) {
                         $creation.remove();
                     }
