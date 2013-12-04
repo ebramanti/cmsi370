@@ -7,7 +7,7 @@
 }
 
 span.character-live-edit.glyphicon.glyphicon-edit {
-    margin-left: 0.5ex;
+    margin-left: 0.5ex; /* used to give space between glyph and current input */
 }
 
 .character-editor-overlay > input, .character-editor-overlay > textarea {
