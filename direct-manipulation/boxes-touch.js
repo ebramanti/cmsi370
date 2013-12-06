@@ -37,11 +37,12 @@ $(function () {
                 //     string at the top, then set its attributes via jQuery, e.g.:
                 //
                 //     ...
-                //     TEMP_BOX_TEMPLATE: '<div class="box"></div>';
+                //     var cache = {},
+                //         TEMP_BOX_TEMPLATE = '<div class="box"></div>';
                 //
                 //     ...
                 //
-                //     var $createdBox = $(BoxesTouch.TEMP_BOX_TEMPLATE).css({
+                //     var $createdBox = $(TEMP_BOX_TEMPLATE).css({
                 //         width: "0px",
                 //         height: "0px",
                 //         left: touch.pageX + "px",
@@ -54,6 +55,7 @@ $(function () {
                 //     less error-prone.
                 //
                 var createdBox = '<div class="box" style="width: 0px; height: 0px; left:' + touch.pageX + 'px; top: ' + touch.pageY + 'px">' + '</div>';
+                // JD: Ack---you hardcoded #drawing-area!
                 $("#drawing-area").append(createdBox);
                 cacheEntry.creation = $("div div:last-child");
                 cacheEntry.creation.addClass("creation-highlight");
