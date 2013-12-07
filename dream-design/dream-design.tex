@@ -21,7 +21,7 @@ In the past few years, mobile operating systems have become a hub for both indep
 To successfully approach designing a user interface for mobile RTS, my approach will be to play to a touchscreen's strengths, and conform to design principles in mobile operating systems.
 	\subsection{Unit Selection}
 	To select a unit within the proposed design, a user will use just a finger and tap on whatever unit they want to control. While this is simple enough, the challenge arises when a user wants to select multiple units, because of a lack of draggable input using a mouse cursor. I decided to take an approach similar to Halo Wars. Halo Wars employs a reticle, and when a user holds down the A button on the Xbox 360 controller, an overlay appears that shows units in the selection circle. Since the user's controller is the touchscreen itself, the same action will occur when one holds down their finger on the screen. After a small delay, the selection circle will expand from the held touch input, and allow multiple units to be selected at once.
-	\begin{figure}[ht]
+	\begin{figure}[h]
 	\begin{center}
 	\includegraphics[height = 2.5in]{blue-selection}
 	\caption{How unit selection is implemented in Halo Wars. When a user holds down the A button, a ring appears that allows multiple units to be selected. The implementation is similar here, but with your finger instead!}
@@ -32,7 +32,7 @@ To successfully approach designing a user interface for mobile RTS, my approach 
 	One of the most important information displays to anyone playing a real-time strategy game is the minimap. The minimap is incredibly useful to see where units are located, and where friendly units are deployed. It allows for users to navigate the map quickly; by selecting a location on the map, it allows the camera to snap quickly to that location on the game map. The minimap also provides the user with a way to see where enemies are attacking, and ``pings'' information to the user when enemy attacks occur.\\
 	\indent The biggest challenge of implementing this on a mobile device, as opposed to a computer, is the size of the smartphone screen. I believe that the minimap is essential for the user interface in the RTS genre, but I also believe that cluttering the camera view of the map with too many tooltips will make it difficult for the user to quickly issue commands to their units. Therefore, I propose a two-size minimap.
 	%	Picture will go here of the minimap.
-	\begin{figure}[ht]
+	\begin{figure}[h]
 	\begin{center}
 	\includegraphics[height = 2.5in]{minimap}
 	\caption{An example of a mock-up minimap design is shown in the top-left corner. Users will interact with the minimap heavily in real-time strategy, which is why placement is key.}
@@ -49,13 +49,19 @@ To successfully approach designing a user interface for mobile RTS, my approach 
 	For camera control, I took inspiration from both iOS and Android Design paradigms. Pinching with two fingers outward will allow the user to zoom in on their current view, and conversely, inward would allow the user to zoom out. It seemed natural to use this in the control scheme so that users would not becomed confused when a two-finger pinch causes a different action to happen, such as a unit selection box. \\
 	\indent In addition, camera rotation is essential for users playing a real-time strategy game. A user needs to be able to see from a different direction than just a fixed north; therefore, the user needs intutitive controls to dynamically adjust to the situation. Once again looking at universal gestures in the mobile OS, I took a page from Google Maps' two finger rotate to view at any angle. This will allow the user to adjust the camera's direction quickly and effectively.
 	\subsection{Building Management \& Interface}
+	\begin{figure}[h]
+	\begin{center}
+	\includegraphics[height = 2.5in]{android-camera}
+	\caption{An example of what a building interface will look like when a user selects a building. Pictured here is the Android Jellybean Camera interface, tilted 90 degrees to the left. An interface similar to this one will be overlayed on top of the selected building on unit tap.}
+	\end{center}
+	\end{figure}
 	%	TODO: Add photo of Android Jellybean Camera interface. Note that implementation is similar, just flipped 90º.
 	For building management, my goal was to make it easy for players to be able to queue up units and research while still maintaining a touchscreen design. In otherwards, I wanted users to be able to quickly see at a glance what's going on quickly with each of their different buildings. I found inspiration in the Stock Android Camera interface, where users hold their finger down and a fanned-out circle appears from their finger. This allows users to toggle different cameras, enable HDR, or even change white balance. Using a similar technique, instead of holding down their finger on a building, when a user taps a building a similar fan-like circle appears around it. \\
 	\indent A good illustration of how this will look would be to imagine a barracks with three unit types: a soldier, an anti-infantry unit, and some other special unit. Each unit would be displayed on the right side of the fan, with a unit count next to the pictorial designation of what type of unit they are. Each little fan section, when soldiers are being queued to be built, will fill with a color as units are trained. On the left side of the fan is where upgrades will be applied to certain units. \\
 	\indent This illustration above is an example of the adaptive interface that this fan will provide on a building. For my design, if a developer wants to create a building type, unit creation will be on the right according to my design guidelines, and research will always be on the left. The only exception to this rule will be if the building itself is for research only, or if it is some special type of building used for only resource collection, etc. The interface adapts to the many different ideas that developers have, while providing them guidelines on how to organize their building tasks.
 \section{Usage Scenarios}
 	\subsection{Creating a Real-Time Strategy Game for Mobile Devices}
-	In its simplest form, this is why this interface was designed: to create a simple and easily controllable interface for a developer to design a game within. According to critics, the difficulties that real-time strategy games have always faced outside of the traditional PC market is lacking a mouse and keyboard. My entire interface design is not only to prove these critics wrong, but also to show that the reason for a lacking RTS market outside of personal computers is because developers have implemented a poor user interface and control system for the user. \\
+	In its simplest form, this is the reason why this interface was designed: to create a simple and easily controllable interface for a developer to design a game within. According to critics, the difficulties that real-time strategy games have always faced outside of the traditional PC market is lacking a mouse and keyboard. My entire interface design is not only to prove these critics wrong, but also to show that the reason for a lacking RTS market outside of personal computers is because developers have implemented a poor user interface and control system for the user. \\
 	\indent The type of real-time strategy that can be implemented using this interface design and layout is pretty endless. While many tower-defense RTS games have already found success on the market due to a time-lapse between tower creation, there are many other genres of real-time strategy that will benefit from this interface. In addition, this usage scenario need not apply to only one device; the interface is designed to be dynamic, regardless of screen size, buttons, etc. This is due to the universal importance of the touchscreen to smartphones; almost all modern smartphones have a touchscreen interface, which means using this interaction style will be seamless and simple for today's devices.
 	\subsection{Companion App: RTS/FPS Hybrid between Console/PC and Mobile Devices}
 	%	TODO: Cite an article on MAG.
@@ -65,8 +71,13 @@ To successfully approach designing a user interface for mobile RTS, my approach 
 	There are a few mobile RTS games on the market today. One notable example is Starfront: Collision, which is available for iOS devices. Starfront's approach for selecting units, or multiple units, is to use a pinch, or two-finger touch, to select a group of units. The biggest problem with Starfront.
 	\subsection{Camera Control}
 	To rationalize my design for camera control, I will address two examples: one illustrating why Starfront: Collision's implementation makes camera control difficult for the user, and mobile OS user interface control for controlling the ``camera'' of a webpage in a mobile browser. \\
-	\indent In Starfront, users are provided with a slider on the right side of the interface, which allows for users to zoom in by sliding up, and zoom out by sliding down. Nevertheless, as mentioned in the Unit Selection rationale, it directly is in conflict with what the gesture does across the OS. A user will use the two-finger pinch gesture, and instead of zooming in, they will be met with a unit selection box. This app is an example of a failure in implementing direct manipulation that corresponds to what most of the mobile OS does in regards to that gesture. \\
-	%	TODO: Put pinch gesture photo here.
+	\indent In Starfront, users are provided with a slider on the right side of the interface, which allows for users to zoom in by sliding up, and zoom out by sliding down. Nevertheless, as mentioned in the Unit Selection rationale, it directly is in conflict with what the gesture does across the OS. A user will use the two-finger pinch gesture, and instead of zooming in, they will be met with a unit selection box. This app is an example of a failure in implementing direct manipulation that corresponds to what most of the mobile OS does in regards to that gesture.
+	\begin{figure}[h]
+	\begin{center}
+	\includegraphics[height = 2.5in]{iphone-two-finger-pinch}
+	\caption{An example of a two-finger pinch gesture common on many mobile operating systems.}
+	\end{center}
+	\end{figure} \\
 	\indent A known paradigm in mobile operating systems is the two-finger pinch gesture; for example, in the Google Maps application on
 \section{Usability Analysis}
 	\subsection{Learnability}
