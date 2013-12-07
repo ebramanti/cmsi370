@@ -36,10 +36,15 @@ To successfully approach designing a user interface for mobile RTS, my approach 
 	\subsection{Camera Control}
 	For camera control, I took inspiration from both iOS and Android Design paradigms. Pinching with two fingers
 \section{Usage Scenarios}
+	\subsection{Creating a Real-Time Strategy Game for Mobile Devices}
+	\subsection{Companion App: RTS/FPS Hybrid between Console/PC and Mobile Devices}
 \section{Design Rationale}
 	\subsection{Unit Selection}
 	There are a few mobile RTS games on the market today. One notable example is Starfront: Collision, which is available for iOS devices. Starfront's approach for selecting units, or multiple units, is to use a pinch, or two-finger touch, to select a group of units. The biggest problem with Starfront.
 	\subsection{Camera Control}
-	To rationalize my design for camera control, I will address two examples: one illustrating why Starfront: Collision's implementation makes camera control difficult for the user, and mobile OS user interface control for controlling the ``camera'' of a webpage in a mobile browser.
+	To rationalize my design for camera control, I will address two examples: one illustrating why Starfront: Collision's implementation makes camera control difficult for the user, and mobile OS user interface control for controlling the ``camera'' of a webpage in a mobile browser. \\
+	In Starfront, users are provided with a slider on the right side of the interface, which allows for users to zoom in by sliding up, and zoom out by sliding down. Nevertheless, as mentioned in the Unit Selection rationale, it directly is in conflict with what the gesture does across the OS. A user will use the two-finger pinch gesture, and instead of zooming in, they will be met with a unit selection box. This app is an example of a failure in implementing direct manipulation that corresponds to what most of the mobile OS does in regards to that gesture. \\
+	%	TODO: Put pinch gesture photo here.
+	A known paradigm in mobile operating systems is the two-finger pinch gesture; for example, in the Google Maps application on
 \section{Usability Analysis}
 \end{document}  
