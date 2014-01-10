@@ -2,11 +2,14 @@
 $(function () {
 
     //  Moved template and row creator into a function.
+    // JD: var functionName = function (...) syntax is preferred.
     function rowGenerator (character) {
         var characterTemplate = character;
         // All the code below displays characters in the main table.
         // EB: Correctly formatted code structure.
         var characterRowTemplate = '<tr id="">' +
+            // JD: Indent to here---you are still inside this variable's declaration.
+            //     (think HWPI: "How would Python indent?")
         '<td><input type="checkbox" class="edit-delete-checkbox" value=""></td>' +
         '<td><a href=""></a></td>' +
         '<td></td>' +
@@ -37,6 +40,19 @@ $(function () {
         "http://lmu-diabolical.appspot.com/characters",
         function (characters) {
             characters.forEach(function (character) {
+                // JD: If you think about it, you do nothing but rowGenerator
+                //     here, and it takes the same arguments.  This, you can just
+                //     pass rowGenerator directly into forEach!
+                //
+                //          characters.forEach(rowGenerator);
+                //
+                //     Nice and compact, yes? :)
+                //
+                //     Note: This is why we prefer the "var" syntax for declaring
+                //     functions---that form continues to emphasize (and lets you
+                //     more easily recognize) that functions are first-class objects
+                //     in JavaScript and can be passed as parameters, referenced as
+                //     attributes, etc.  There *is* a method to this madness :)
                 rowGenerator(character);
             });
         }

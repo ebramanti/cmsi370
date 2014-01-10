@@ -57,6 +57,8 @@
                     .width($attributeEditor.width())
                     .height($attributeEditor.height() + 6);
                 //console.log($("#edit-modal-body").offset().left);
+
+            // JD: You're done with the var statement here, so decrease the indent.
                 $("#edit-modal-body").append($editOverlay);
                 $editOverlay.append($input);
                 $input.focus().select();

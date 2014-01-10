@@ -44,6 +44,7 @@ $(function () {
         	$(".attributething").text("Class: " + character.classType + " - Gender: " + character.gender + " - Level: " + character.level + " - Money: " + character.money);
     });
 
+    // JD: var functionName = function (...) syntax is preferred.
     function populateCharacter() {
         var skillRowTemplate = "<tr>"+ 
             "<td></td>" + 
@@ -77,6 +78,8 @@ $(function () {
         for (var i = 0; i < skills.length; i++) {
             var currentSkillSet = skills[i];
             var colorId;
+            // JD: Why not also integrate this into your data structure?
+            //     This is effectively a map.
             switch (currentSkillSet) {
                 case redSkills:
                     colorId = "red";
@@ -98,6 +101,7 @@ $(function () {
         }
     }
 
+    // JD: var functionName = function (...) syntax is preferred.
     function populateItem() {
         var itemRowTemplate = "<tr>" + 
             "<td><input type='checkbox'></td>" + 
