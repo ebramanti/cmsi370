@@ -54,6 +54,7 @@ For this assignment, I designed an in-place text editor for editing attributes o
 #### Dream Design
 
 The objective of this assignment was to design your idea of a “dream” user interface for a selected system. My design had to include the following:
+
 1. A top-level design or layout
 2. At least two usage scenarios
 3. Rationale for your design: relevant priorities, mental models, interaction design concepts, guidelines, principles, theories, etc.
